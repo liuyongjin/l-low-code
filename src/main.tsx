@@ -1,5 +1,5 @@
-// import "./index.css";
-import "./index.less";
+// import "./index.less";
+import "@/theme/index.less";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

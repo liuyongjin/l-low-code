@@ -1,20 +1,15 @@
-import "./App.css";
-
-import { Button } from "antd";
+import { Router } from "@/router";
 
 function App() {
-  return (
-    <>
-      <div className="flex md:bg-black min-w-10 content-between">
-        <div>
-          <Button>123</Button>
-        </div>
-        <div>
-          <Button>123</Button>
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="flex">
+				<div>123</div>
+				<div>123</div>
+			</div>
+			<Router />
+		</>
+	);
 }
 
 export default App;
