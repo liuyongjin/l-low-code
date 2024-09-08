@@ -11,7 +11,8 @@ i18n
   .use(initReactI18next)
   .use(LanguageDetector)
   .init({
-    debug: true,
+    // debug: true,
+    debug: false,
     lng: defaultLng,
     fallbackLng: defaultLng,
     interpolation: {
