@@ -1,4 +1,3 @@
-// import "./index.less";
 import "@/theme/index.less";
 import "./locales/i18n";
 
@@ -14,5 +13,5 @@ createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <App />
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

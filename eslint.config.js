@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import tseslint from "typescript-eslint";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -14,16 +15,6 @@ export default tseslint.config(
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    // settings: {
-    //   'import/resolver': {
-    //     alias: {
-    //       map: [
-    //         ['@', './src'],
-    //       ],
-    //       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-    //     },
-    //   },
-    // },
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
@@ -38,5 +29,6 @@ export default tseslint.config(
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
     },
-  }
+  },
+  eslintPluginPrettierRecommended,
 );
