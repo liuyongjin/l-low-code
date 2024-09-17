@@ -1,14 +1,15 @@
 import { Layout } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
-import { incremented } from "@/store";
+import { AppDispatch, incremented, RootState } from "@/store";
 
 import { LoginForm } from "./partial/LoginForm";
 
 export const Login = () => {
-  const dispatch = useDispatch();
-  const count = useSelector((state) => state);
-  console.log(count);
+  const dispatch: AppDispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const setting = useSelector((state: RootState) => state.setting);
+  console.log(setting);
   return (
     <Layout className="flex flex-grow">
       <button onClick={() => dispatch(incremented())}>+</button>
