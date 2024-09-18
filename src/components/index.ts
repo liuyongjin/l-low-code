@@ -1,2 +1,2 @@
-export * from "./auth-guard/AuthGuard";
-export * from "./circle-loading/CircleLoading";
+export * from "./auth-guard/auth-guard";
+export * from "./circle-loading/circle-loading";

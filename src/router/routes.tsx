@@ -10,9 +10,9 @@ import { Dashboard } from "@/layouts";
 import { Workbench } from "@/pages/dashboard/workbench/Workbench";
 import { Permission } from "@/pages/management/permission/Permission";
 import { Login } from "@/pages/sys/login/Login";
-import { Page403 } from "@/pages/sys/page-403/Page403";
-import { Page404 } from "@/pages/sys/page-404/Page404";
-import { Page500 } from "@/pages/sys/page-500/Page500";
+import { Page403 } from "@/pages/sys/page-403/page-403";
+import { Page404 } from "@/pages/sys/page-404/page-404";
+import { Page500 } from "@/pages/sys/page-500/page-500";
 
 const loginRoutes = {
   path: "login",

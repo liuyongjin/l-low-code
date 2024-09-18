@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, incremented, RootState } from "@/store";
 
-import { LoginForm } from "./partial/LoginForm";
+import { LoginForm } from "./partial/login-form";
 
 export const Login = () => {
   const dispatch: AppDispatch = useDispatch();
