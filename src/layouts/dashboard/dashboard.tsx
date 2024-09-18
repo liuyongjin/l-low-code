@@ -1,14 +1,15 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Layout, theme } from "antd";
+import { Button, Flex, Layout, theme } from "antd";
 import { Suspense } from "react";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components";
 
+import { Header } from "./partial/header";
 import { Nav } from "./partial/nav";
 
-const { Header, Sider, Content } = Layout;
+const { Header: AntdHeader, Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -24,18 +25,21 @@ export const Dashboard = () => {
           <Nav />
         </Sider>
         <Layout>
-          <Header style={{ padding: 0, background: colorBgContainer }}>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
-              }}
-            />
-          </Header>
+          <AntdHeader style={{ padding: 0, background: colorBgContainer }}>
+            <Flex gap="middle">
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+              <Header />
+            </Flex>
+          </AntdHeader>
           <Content
             style={{
               margin: "24px 16px",

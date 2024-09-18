@@ -1,0 +1,50 @@
+// import { IconButton, Iconify } from "@/components/icon";
+// import LocalePicker from "@/components/locale-picker";
+
+// import { useSettings } from "@/store/settingStore";
+// import { useResponsive, useThemeToken } from "@/theme/hooks";
+// import AccountDropdown from "../_common/account-dropdown";
+// import BreadCrumb from "../_common/bread-crumb";
+// import SettingButton from "../_common/setting-button";
+// import { HEADER_HEIGHT, OFFSET_HEADER_HEIGHT } from "./config";
+
+type HeaderProps = {
+  className?: string;
+  offsetTop?: boolean;
+};
+export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
+  // const { themeLayout, breadCrumb } = useSettings();
+
+  return (
+    <>
+      <header className={`z-20 w-full ${className}`}>
+        <div
+          className="flex flex-grow items-center justify-between px-4 text-gray backdrop-blur xl:px-6 2xl:px-10"
+          style={{
+            // height: offsetTop ? OFFSET_HEADER_HEIGHT : HEADER_HEIGHT,
+            transition: "height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+          }}
+        >
+          {/* <div className="flex items-baseline">
+            <div className="ml-4 hidden md:block">
+              {breadCrumb ? <BreadCrumb /> : null}
+            </div>
+          </div> */}
+          <div className="flex">
+            123
+            {/* <LocalePicker />
+            <IconButton
+              onClick={() =>
+                window.open("https://github.com/d3george/slash-admin")
+              }
+            >
+              <Iconify icon="mdi:github" size={24} />
+            </IconButton>
+            <SettingButton />
+            <AccountDropdown /> */}
+          </div>
+        </div>
+      </header>
+    </>
+  );
+};
