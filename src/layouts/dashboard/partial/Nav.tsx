@@ -1,18 +1,19 @@
 import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useMatches, useNavigate } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const items: MenuItem[] = [
   {
-    key: "Dashboard",
+    key: "/dashboard",
     label: "Dashboard",
     icon: <MailOutlined />,
     children: [{ key: "/dashboard/workbench", label: "Workbench" }],
   },
   {
-    key: "Management",
+    key: "/management",
     label: "Management",
     icon: <AppstoreOutlined />,
     children: [{ key: "/management/permission", label: "Permission" }],
@@ -21,6 +22,24 @@ const items: MenuItem[] = [
 
 export const Nav = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const matches = useMatches();
+
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
+
+  useEffect(() => {
+    const openKeys = matches
+      .filter((match) => match.pathname !== "/")
+      .map((match) => match.pathname);
+    // console.log(matches);
+    setOpenKeys(openKeys);
+  }, [matches]);
+  // console.log(openKeys);
+  // console.log(pathname);
+
+  const handleOpenChange: MenuProps["onOpenChange"] = (keys) => {
+    setOpenKeys(keys);
+  };
 
   const handleClick: MenuProps["onClick"] = ({ key }) => {
     navigate(key);
@@ -31,13 +50,12 @@ export const Nav = () => {
       // className="h-full !border-none"
       theme="dark"
       mode="inline"
-      // defaultSelectedKeys={["1"]}
       items={items}
       // defaultOpenKeys={openKeys}
       // defaultSelectedKeys={[pathname]}
       // selectedKeys={[pathname]}
       // openKeys={openKeys}
-      // onOpenChange={onOpenChange}
+      // onOpenChange={handleOpenChange}
       onClick={handleClick}
       // style={menuStyle}
       // inlineCollapsed={collapsed}

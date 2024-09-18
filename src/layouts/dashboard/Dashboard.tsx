@@ -6,9 +6,9 @@ import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components";
 
-const { Header, Sider, Content } = Layout;
+import { Nav } from "./partial/nav";
 
-import { Nav } from "./partial/Nav";
+const { Header, Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);

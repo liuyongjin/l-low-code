@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 
 import { Dashboard } from "@/layouts";
-import { Workbench } from "@/pages/dashboard/workbench/Workbench";
-import { Permission } from "@/pages/management/permission/Permission";
-import { Login } from "@/pages/sys/login/Login";
+import { Workbench } from "@/pages/dashboard/workbench/workbench";
+import { Permission } from "@/pages/management/permission/permission";
+import { Login } from "@/pages/sys/login/login";
 import { Page403 } from "@/pages/sys/page-403/page-403";
 import { Page404 } from "@/pages/sys/page-404/page-404";
 import { Page500 } from "@/pages/sys/page-500/page-500";
@@ -60,7 +60,6 @@ export const Router = () => {
   };
 
   const routes = [loginRoutes, asyncRoutes, errorRoutes, pageNotFoundRoutes];
-  console.log(routes);
   // const router = createHashRouter(routes as unknown as RouteObject[]);
   const router = createBrowserRouter(routes as RouteObject[]);
   return <RouterProvider router={router} />;
