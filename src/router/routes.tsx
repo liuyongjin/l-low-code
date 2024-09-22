@@ -27,6 +27,9 @@ const loginRoutes = {
 
 const errorRoutes = {
   element: <Dashboard />,
+  loader: () => {
+    return { label: "Dashboard Error" };
+  },
   children: [
     { path: "403", element: <Page403 /> },
     { path: "404", element: <Page404 /> },
@@ -43,6 +46,9 @@ export const Router = () => {
   const asyncRoutes: RouteObject = {
     path: "/",
     element: <Dashboard />,
+    loader: () => {
+      return { label: "Dashboard" };
+    },
     children: [
       {
         index: true,
@@ -50,11 +56,19 @@ export const Router = () => {
       },
       {
         path: "dashboard/workbench",
+        id: "workbench",
         element: <Workbench />,
+        loader: () => {
+          return { label: "Workbench" };
+        },
       },
       {
         path: "management/permission",
+        id: "permission",
         element: <Permission />,
+        loader: () => {
+          return { label: "Permission" };
+        },
       },
     ],
   };

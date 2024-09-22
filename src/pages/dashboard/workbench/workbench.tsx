@@ -1,3 +1,8 @@
 export const Workbench = () => {
-  return <div>Workbench</div>;
+  return (
+    <div>
+      <input type="text" />
+      Workbench
+    </div>
+  );
 };

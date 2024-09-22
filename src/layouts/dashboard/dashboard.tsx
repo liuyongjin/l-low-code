@@ -5,14 +5,18 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components";
+import { MultiTabsProvider } from "@/provider";
 
-import { Header } from "./partial/header";
-import { Nav } from "./partial/nav";
+import { Header } from "./components/header";
+import { MultiTabs } from "./components/multi-tabs";
+import { Nav } from "./components/nav";
 
 const { Header: AntdHeader, Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [multiTab, setMultiTab] = useState(true);
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -40,16 +44,33 @@ export const Dashboard = () => {
               <Header />
             </Flex>
           </AntdHeader>
-          <Content
-            style={{
-              margin: "24px 16px",
-              padding: 24,
-              minHeight: 280,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            <Outlet />
+          <Content>
+            {multiTab ? (
+              <div
+                style={{
+                  margin: "16px 16px 0 16px",
+                  minHeight: 280,
+                  background: colorBgContainer,
+                  borderRadius: borderRadiusLG,
+                }}
+              >
+                <MultiTabsProvider>
+                  <MultiTabs offsetTop={false} />
+                </MultiTabsProvider>
+              </div>
+            ) : (
+              <div
+                style={{
+                  margin: "0 16px",
+                  padding: 24,
+                  minHeight: 280,
+                  background: colorBgContainer,
+                  borderRadius: borderRadiusLG,
+                }}
+              >
+                <Outlet />
+              </div>
+            )}
           </Content>
         </Layout>
       </Layout>
