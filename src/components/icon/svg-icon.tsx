@@ -25,6 +25,7 @@ export function SvgIcon({
     color,
     ...style,
   };
+  console.log(symbolId);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

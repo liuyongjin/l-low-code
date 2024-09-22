@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components";
 import { MultiTabsProvider } from "@/provider";
+import { useSetting } from "@/store";
 
 import { Header } from "./components/header";
 import { MultiTabs } from "./components/multi-tabs";
@@ -15,7 +16,9 @@ const { Header: AntdHeader, Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [multiTab, setMultiTab] = useState(true);
+  const { multiTab } = useSetting();
+  // console.log(multiTab);
+  // const [multiTab, setMultiTab] = useState(true);
 
   const {
     token: { colorBgContainer, borderRadiusLG },

@@ -1,6 +1,10 @@
 // import { IconButton, Iconify } from "@/components/icon";
 // import LocalePicker from "@/components/locale-picker";
 
+import { IconButton, Iconify } from "@/components";
+
+import { SettingButton } from "./setting-button";
+
 // import { useSettings } from "@/store/settingStore";
 // import { useResponsive, useThemeToken } from "@/theme/hooks";
 // import AccountDropdown from "../_common/account-dropdown";
@@ -17,7 +21,7 @@ export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
 
   return (
     <>
-      <header className={`z-20 w-full ${className}`}>
+      <header className={`z-20 w-full flex items-center ${className}`}>
         <div
           className="flex flex-grow items-center justify-between px-4 text-gray backdrop-blur xl:px-6 2xl:px-10"
           style={{
@@ -25,23 +29,20 @@ export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
             transition: "height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
           }}
         >
-          {/* <div className="flex items-baseline">
-            <div className="ml-4 hidden md:block">
+          <div className="flex items-baseline">
+            {/* <div className="ml-4 hidden md:block">
               {breadCrumb ? <BreadCrumb /> : null}
-            </div>
-          </div> */}
+            </div> */}
+          </div>
           <div className="flex">
-            123
-            {/* <LocalePicker />
+            {/* <LocalePicker /> */}
             <IconButton
-              onClick={() =>
-                window.open("https://github.com/d3george/slash-admin")
-              }
+              onClick={() => window.open("https://github.com/liuyongjin")}
             >
               <Iconify icon="mdi:github" size={24} />
             </IconButton>
             <SettingButton />
-            <AccountDropdown /> */}
+            {/* <AccountDropdown /> */}
           </div>
         </div>
       </header>

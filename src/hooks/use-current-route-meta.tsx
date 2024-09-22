@@ -43,7 +43,6 @@ export function useCurrentRouteMeta() {
       loaderData.hideMenu = false;
       loaderData.hideTab = false;
       setCurrentRouteMeta({ ...loaderData });
-      console.log(loaderData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchs]);

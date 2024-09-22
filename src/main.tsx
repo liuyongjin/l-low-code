@@ -1,5 +1,6 @@
 import "@/theme/index.less";
 import "./locales/i18n";
+import "virtual:svg-icons-register";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

@@ -445,6 +445,7 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
       size="small"
       type="card"
       tabBarGutter={4}
+      // destroyInactiveTabPane
       activeKey={activeTabRoutePath}
       items={tabItems}
       renderTabBar={renderTabBar}
