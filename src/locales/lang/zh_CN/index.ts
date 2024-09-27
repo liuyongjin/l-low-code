@@ -9,6 +9,12 @@ export default {
       closeLeft: "关闭左侧标签页",
       closeRight: "关闭右侧标签页",
     },
+    menu: {
+      docs: "文档",
+      dashboard: "仪表",
+      profile: "个人资料",
+      account: "账户",
+    },
   },
   sys: {
     login: {

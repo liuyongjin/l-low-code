@@ -3,6 +3,8 @@
 
 import { IconButton, Iconify } from "@/components";
 
+import { AccountDropdown } from "./account-dropdown";
+import { LocalePicker } from "./locale-picker";
 import { SettingButton } from "./setting-button";
 
 // import { useSettings } from "@/store/settingStore";
@@ -35,14 +37,14 @@ export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
             </div> */}
           </div>
           <div className="flex">
-            {/* <LocalePicker /> */}
             <IconButton
               onClick={() => window.open("https://github.com/liuyongjin")}
             >
               <Iconify icon="mdi:github" size={24} />
             </IconButton>
+            <LocalePicker />
             <SettingButton />
-            {/* <AccountDropdown /> */}
+            <AccountDropdown />
           </div>
         </div>
       </header>
