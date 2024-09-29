@@ -1,6 +1,9 @@
-// import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+
+import { UserInfo } from "@/types/entity";
+import { StorageEnum } from "@/types/enum";
+import { getItem, setItem } from "@/utils";
 
 import { RootState } from "./store";
 
@@ -17,9 +20,21 @@ const initialState = {
 
 export const userInfoSlice = createSlice({
   name: "userInfo",
-  initialState,
-  reducers: {},
+  initialState: getItem<UserInfo>(StorageEnum.User) || initialState,
+  reducers: {
+    setUserInfo: (state, action: PayloadAction<Partial<unknown>>) => {
+      const userInfo = {
+        ...state,
+        ...action.payload,
+      };
+      console.log(userInfo);
+      setItem(StorageEnum.User, userInfo);
+      return userInfo;
+    },
+  },
 });
+
+export const { setUserInfo } = userInfoSlice.actions;
 
 export const useUserInfo = () =>
   useSelector((state: RootState) => state.userInfo);

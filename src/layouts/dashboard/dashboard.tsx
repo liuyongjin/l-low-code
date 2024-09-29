@@ -17,7 +17,6 @@ const { Header: AntdHeader, Sider, Content } = Layout;
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { multiTab } = useSetting();
-  // console.log(multiTab);
   // const [multiTab, setMultiTab] = useState(true);
 
   const {

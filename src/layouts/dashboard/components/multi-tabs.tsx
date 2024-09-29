@@ -361,7 +361,6 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
   const handleTabClick = ({ key, params = {} }: KeepAliveTab) => {
     // const tabKey = replaceDynamicParams(key, params);
     // push(tabKey);
-    // console.log(key);
     push(key);
   };
 

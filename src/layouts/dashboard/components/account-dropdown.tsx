@@ -8,7 +8,7 @@ import { IconButton, Iconify } from "@/components";
 import { useRouter, useThemeToken } from "@/hooks";
 import { useUserInfo } from "@/store";
 
-const { HOMEPAGE } = import.meta.env;
+const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
 /**
  * Account Dropdown

@@ -31,11 +31,8 @@ export const Nav = () => {
     const openKeys = matches
       .filter((match) => match.pathname !== "/")
       .map((match) => match.pathname);
-    // console.log(matches);
     setOpenKeys(openKeys);
   }, [matches]);
-  // console.log(openKeys);
-  // console.log(pathname);
 
   const handleOpenChange: MenuProps["onOpenChange"] = (keys) => {
     setOpenKeys(keys);

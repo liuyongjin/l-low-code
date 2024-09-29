@@ -1,4 +1,4 @@
-import { BasicStatus, PermissionType } from './enum';
+import { BasicStatus, PermissionType } from "./enum";
 
 export interface UserToken {
   accessToken?: string;
@@ -19,7 +19,7 @@ export interface UserInfo {
 export interface Organization {
   id: string;
   name: string;
-  status: 'enable' | 'disable';
+  status: "enable" | "disable";
   desc?: string;
   order?: number;
   children?: Organization[];
@@ -28,18 +28,20 @@ export interface Organization {
 export interface Permission {
   id: string;
   parentId: string;
-  name: string;
+  // name: string;
   label: string;
-  type: PermissionType;
-  route: string;
-  status?: BasicStatus;
-  order?: number;
+  path: string;
+  // type: PermissionType;
+  // route: string;
+  // status?: BasicStatus;
+  // order?: number;
   icon?: string;
+  componentName?: string;
   component?: string;
-  hide?: boolean;
-  hideTab?: boolean;
-  frameSrc?: string;
-  newFeature?: boolean;
+  // hide?: boolean;
+  // hideTab?: boolean;
+  // frameSrc?: string;
+  // newFeature?: boolean;
   children?: Permission[];
 }
 

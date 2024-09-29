@@ -6,3 +6,5 @@ export const HEADER_HEIGHT = 80;
 export const OFFSET_HEADER_HEIGHT = 64;
 
 export const MULTI_TABS_HEIGHT = 32;
+
+export const ENTRY_PATH = "/src/pages";

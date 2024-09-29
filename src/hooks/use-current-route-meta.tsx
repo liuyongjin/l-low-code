@@ -11,7 +11,7 @@ import { RouteMeta } from "@/types/router";
 
 import { useRouter } from "./use-router";
 
-const { HOMEPAGE } = import.meta.env;
+const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 /**
  * 返回当前路由Meta信息
  */
@@ -27,10 +27,10 @@ export function useCurrentRouteMeta() {
 
   const [currentRouteMeta, setCurrentRouteMeta] = useState<RouteMeta>();
 
-  const loaderData = useRouteLoaderData(
-    pathname.split("/").pop() || "",
-  ) as RouteMeta;
-  // console.log(loaderData, pathname);
+  // const loaderData = useRouteLoaderData(
+  //   pathname.split("/").pop() || "",
+  // ) as RouteMeta;
+  const loaderData = useRouteLoaderData(pathname) as RouteMeta;
 
   useEffect(() => {
     // 获取当前匹配的路由

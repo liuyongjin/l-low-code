@@ -30,7 +30,7 @@ interface MultiTabsContextType {
   refreshTab: (path: string) => void;
 }
 
-const { HOMEPAGE } = import.meta.env;
+const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
 export const MultiTabsContext = createContext<MultiTabsContextType>({
   tabs: [],

@@ -1,20 +1,14 @@
 import { Layout } from "antd";
 
-// import { useDispatch, useSelector } from "react-redux";
-// import { AppDispatch, incremented, RootState } from "@/store";
 import { LoginForm } from "./components/login-form";
 
 export const Login = () => {
-  // const dispatch: AppDispatch = useDispatch();
-  // const dispatch = useDispatch();
-  // const setting = useSelector((state: RootState) => state.setting);
-  // console.log(setting);
   return (
-    <Layout className="flex flex-grow">
-      {/* <button onClick={() => dispatch(incremented())}>+</button> */}
-      <LoginForm />
+    <Layout className="flex flex-row items-center h-full">
+      <div className="flex-1"></div>
+      <div className="w-96 p-4 m-4 bg-white rounded-md">
+        <LoginForm />
+      </div>
     </Layout>
   );
 };
-
-// export default Login;

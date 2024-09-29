@@ -23,7 +23,6 @@ export const settingSlice = createSlice({
       state,
       action: PayloadAction<Partial<typeof initialState>>,
     ) => {
-      // console.log(state, action);
       return {
         ...state,
         ...action.payload,

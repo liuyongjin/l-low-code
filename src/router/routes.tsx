@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import { usePermissionRoutes } from "@/hooks";
 import { Dashboard } from "@/layouts";
 import { Workbench } from "@/pages/dashboard/workbench/workbench";
 import { Permission } from "@/pages/management/permission/permission";
@@ -43,8 +44,12 @@ const pageNotFoundRoutes = {
 };
 
 export const Router = () => {
+  const permissionRoutes = usePermissionRoutes();
+  // console.log(permissionRoutes);
+
   const asyncRoutes: RouteObject = {
     path: "/",
+    id: "/",
     element: <Dashboard />,
     loader: () => {
       return { label: "Dashboard" };
@@ -54,27 +59,37 @@ export const Router = () => {
         index: true,
         element: <Navigate to={"/dashboard/workbench"} replace />,
       },
-      {
-        path: "dashboard/workbench",
-        id: "workbench",
-        element: <Workbench />,
-        loader: () => {
-          return { label: "Workbench" };
-        },
-      },
-      {
-        path: "management/permission",
-        id: "permission",
-        element: <Permission />,
-        loader: () => {
-          return { label: "Permission" };
-        },
-      },
+      // {
+      //   path: "dashboard",
+      //   children: [
+      //     {
+      //       path: "workbench",
+      //       id: "/dashboard/workbench",
+      //       element: <Workbench />,
+      //       loader: () => {
+      //         return { label: "Workbench" };
+      //       },
+      //     },
+      //   ],
+      // },
+      // {
+      //   path: "management",
+      //   children: [
+      //     {
+      //       path: "permission",
+      //       id: "/management/permission",
+      //       element: <Permission />,
+      //       loader: () => {
+      //         return { label: "Permission" };
+      //       },
+      //     },
+      //   ],
+      // },
+      ...permissionRoutes,
     ],
   };
 
   const routes = [loginRoutes, asyncRoutes, errorRoutes, pageNotFoundRoutes];
-  // const router = createHashRouter(routes as unknown as RouteObject[]);
   const router = createBrowserRouter(routes as RouteObject[]);
   return <RouterProvider router={router} />;
 };
