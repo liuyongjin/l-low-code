@@ -18,6 +18,7 @@ import { Permission } from "@/types/entity";
 function transformToPermissionRoutes(permissions: Permission[]) {
   return permissions.map((permission) => {
     const {
+      id,
       label,
       path,
       icon,
@@ -27,7 +28,7 @@ function transformToPermissionRoutes(permissions: Permission[]) {
     } = permission;
     const route: RouteObject = {
       path: path,
-      id: path,
+      id: id,
       loader: () => {
         return { icon, label };
       },

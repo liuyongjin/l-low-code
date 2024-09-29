@@ -45,7 +45,7 @@ const pageNotFoundRoutes = {
 
 export const Router = () => {
   const permissionRoutes = usePermissionRoutes();
-  // console.log(permissionRoutes);
+  console.log(permissionRoutes);
 
   const asyncRoutes: RouteObject = {
     path: "/",

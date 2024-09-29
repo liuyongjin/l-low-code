@@ -21,32 +21,36 @@ export const LoginForm = () => {
       setUserInfo({
         permissions: [
           {
-            id: "9100714781927703",
+            // id: "9100714781927703",
             label: "sys.menu.dashboard",
             icon: "ic-analysis",
-            path: "/dashboard",
+            path: "dashboard",
+            id: "/dashboard",
             children: [
               {
-                id: "8426999229400979",
-                parentId: "9100714781927703",
+                // id: "8426999229400979",
+                parentId: "/dashboard",
                 label: "sys.menu.workbench",
-                path: "/dashboard/workbench",
+                path: "workbench",
+                id: "/dashboard/workbench",
                 componentName: "Workbench",
                 component: "/dashboard/workbench/workbench.tsx",
               },
             ],
           },
           {
-            id: "0901673425580518",
+            // id: "0901673425580518",
             label: "sys.menu.management",
             icon: "ic-management",
-            path: "/management",
+            path: "management",
+            id: "/management",
             children: [
               {
-                id: "4359580910369984",
-                parentId: "2781684678535711",
+                // id: "4359580910369984",
+                parentId: "/management",
                 label: "sys.menu.system.permission",
-                path: "/management/permission",
+                path: "permission",
+                id: "/management/permission",
                 componentName: "Permission",
                 component: "/management/permission/permission.tsx",
               },
