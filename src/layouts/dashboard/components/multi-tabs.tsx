@@ -32,7 +32,6 @@ import {
 import { useMultiTabsContext, useRouter, useThemeToken } from "@/hooks";
 import { KeepAliveTab } from "@/provider";
 import { MultiTabOperation, ThemeLayout } from "@/types/enum";
-// import { useSettings } from "@/store/settingStore";
 // import { useResponsive } from "@/theme/hooks";
 
 type MultiTabsProps = {
@@ -330,7 +329,6 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
   /**
    * 渲染 tabbar
    */
-  //   const { themeLayout } = useSettings();
   const { themeLayout = {} } = {};
   //   const { colorBorder, colorBgElevated } = useThemeToken();
   //   const { screenMap } = useResponsive();

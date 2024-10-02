@@ -18,11 +18,11 @@ const initialState = {
 
 export type settingType = Partial<typeof initialState>;
 
-export const settingSlice = createSlice({
-  name: "setting",
+export const settingsSlice = createSlice({
+  name: "settings",
   initialState,
   reducers: {
-    setSetting: (state, action: PayloadAction<settingType>) => {
+    setSettings: (state, action: PayloadAction<settingType>) => {
       return {
         ...state,
         ...action.payload,
@@ -37,7 +37,7 @@ export const settingSlice = createSlice({
   },
 });
 
-export const { setSetting } = settingSlice.actions;
+export const { setSettings } = settingsSlice.actions;
 
-export const useSetting = () =>
-  useSelector((state: RootState) => state.setting);
+export const useSettings = () =>
+  useSelector((state: RootState) => state.settings);

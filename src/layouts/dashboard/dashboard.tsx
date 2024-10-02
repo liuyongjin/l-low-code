@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 import { CircleLoading } from "@/components";
 import { MultiTabsProvider } from "@/provider";
-import { useSetting } from "@/store";
+import { useSettings } from "@/store";
 
 import { Header } from "./components/header";
 import { MultiTabs } from "./components/multi-tabs";
@@ -16,7 +16,7 @@ const { Header: AntdHeader, Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const { multiTab } = useSetting();
+  const { multiTab } = useSettings();
   // const [multiTab, setMultiTab] = useState(true);
 
   const {

@@ -7,7 +7,7 @@ import { AccountDropdown } from "./account-dropdown";
 import { LocalePicker } from "./locale-picker";
 import { SettingButton } from "./setting-button";
 
-// import { useSettings } from "@/store/settingStore";
+// import { useSettingss } from "@/store/settingStore";
 // import { useResponsive, useThemeToken } from "@/theme/hooks";
 // import AccountDropdown from "../_common/account-dropdown";
 // import BreadCrumb from "../_common/bread-crumb";
@@ -19,7 +19,7 @@ type HeaderProps = {
   offsetTop?: boolean;
 };
 export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
-  // const { themeLayout, breadCrumb } = useSettings();
+  // const { themeLayout, breadCrumb } = useSettingss();
 
   return (
     <>

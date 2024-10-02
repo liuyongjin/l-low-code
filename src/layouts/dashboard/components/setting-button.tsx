@@ -7,21 +7,14 @@ import { CSSProperties, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { IconButton, Iconify, SvgIcon } from "@/components";
-// import screenfull from "screenfull";
 // import CyanBlur from "@/assets/images/background/cyan-blur.png";
 // import RedBlur from "@/assets/images/background/red-blur.png";
 // import { varHover } from "@/components/animate/variants/action";
 import { useThemeToken } from "@/hooks";
-import { setSetting, settingType, useSetting } from "@/store";
+import { setSettings, settingType, useSettings } from "@/store";
 import { colorPrimarys } from "@/theme/antd/theme";
 import { ThemeColorPresets, ThemeMode } from "@/types/enum";
-// import { useSetting } from "@/store";
-// import { useSettingActions, useSettings } from "@/store/settingStore";
-// import { ThemeLayout } from "@/types/enum";
 
-/**
- * App Setting
- */
 export function SettingButton() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const {
@@ -31,29 +24,11 @@ export function SettingButton() {
     colorTextTertiary,
     // colorBgContainer,
   } = useThemeToken();
-  const { themeMode, fixHeader, themeColorPresets, multiTab } = useSetting();
+  const { themeMode, fixHeader, themeColorPresets, multiTab } = useSettings();
   const dispatch = useDispatch();
-  // const settings = useSetting();
-  // const {
-  //   themeMode,
-  //   themeColorPresets,
-  //   themeLayout,
-  //   themeStretch,
-  //   breadCrumb,
-  //   multiTab,
-  // } = settings;
-  // const { setSetting } = useSettingActions();
-
-  // const setThemeMode = (mode: ThemeMode) => {
-  //   // setSetting({
-  //   //   ...settings,
-  //   //   themeMode,
-  //   // });
-  //   dispatch(setSetting({ themeMode: mode }));
-  // };
 
   const handleSetSetting = (newSetSetting: settingType) => {
-    dispatch(setSetting(newSetSetting));
+    dispatch(setSettings(newSetSetting));
   };
 
   const style: CSSProperties = {
@@ -67,19 +42,25 @@ export function SettingButton() {
 
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body);
 
-  // const [isFullscreen, setIsFullscreen] = useState(screenfull.isFullscreen);
-  // const toggleFullScreen = () => {
-  //   toggleFullScreen();
-  // if (screenfull.isEnabled) {
-  //   screenfull.toggle();
-  //   setIsFullscreen(!isFullscreen);
-  // }
-  // };
+  // console.log(fixHeader);
 
   // const layoutBackground = (layout: ThemeLayout) =>
   //   themeLayout === layout
   //     ? `linear-gradient(135deg, ${colorBgBase} 0%, ${colorPrimary} 100%)`
   //     : "#919eab";
+  // useWhyDidYouUpdate("useWhyDidYouUpdateComponent", {
+  //   ...props,
+  //   dispatch,
+  //   drawerOpen,
+  //   colorPrimary,
+  //   colorTextSecondary,
+  //   colorTextTertiary,
+  //   themeMode,
+  //   fixHeader,
+  //   themeColorPresets,
+  //   multiTab,
+  //   isFullscreen,
+  // });
 
   return (
     <>

@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { settingSlice } from "./setting-slice";
+import { settingsSlice } from "./settings-slice";
 import { userInfoSlice } from "./user-info-slice";
 
 export const store = configureStore({
   reducer: {
-    setting: settingSlice.reducer,
+    settings: settingsSlice.reducer,
     userInfo: userInfoSlice.reducer,
   },
 });
