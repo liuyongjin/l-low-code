@@ -86,7 +86,7 @@ export function SettingButton() {
       </div>
       <Drawer
         placement="right"
-        title={t("layout.setting.setting")}
+        title={t("layout.settings.settings")}
         onClose={() => setDrawerOpen(false)}
         open={drawerOpen}
         closable={false}
@@ -115,14 +115,14 @@ export function SettingButton() {
                     className="!m-0"
                   />
                   <span className="ml-2">
-                    {t("layout.setting.exitFullScreen")}
+                    {t("layout.settings.exitFullScreen")}
                   </span>
                 </>
               ) : (
                 <>
                   <SvgIcon icon="ic-settings-fullscreen" className="!m-0" />
                   <span className="ml-2 text-gray">
-                    {t("layout.setting.fullScreen")}
+                    {t("layout.settings.fullScreen")}
                   </span>
                 </>
               )}
@@ -137,7 +137,7 @@ export function SettingButton() {
               className="mb-3 text-base font-semibold"
               style={{ color: colorTextSecondary }}
             >
-              {t("layout.setting.mode")}
+              {t("layout.settings.mode")}
             </div>
             <div className="flex flex-row gap-4">
               <Card
@@ -170,7 +170,7 @@ export function SettingButton() {
               className="mb-3 text-base font-semibold"
               style={{ color: colorTextSecondary }}
             >
-              {t("layout.setting.presets")}
+              {t("layout.settings.presets")}
             </div>
             <div className="grid grid-cols-3 gap-x-4 gap-y-3">
               {Object.entries(colorPrimarys).map(([preset, color]) => (
@@ -211,14 +211,14 @@ export function SettingButton() {
               className="mb-3 text-base font-semibold"
               style={{ color: colorTextSecondary }}
             >
-              {t("layout.setting.page")}
+              {t("layout.settings.page")}
             </div>
             <div className="flex flex-col gap-2">
               <div
                 className="flex items-center justify-between"
                 style={{ color: colorTextTertiary }}
               >
-                <div>{t("layout.setting.fixHeader")}</div>
+                <div>{t("layout.settings.fixHeader")}</div>
                 <Switch
                   size="small"
                   checked={fixHeader}
@@ -232,7 +232,7 @@ export function SettingButton() {
                 className="flex items-center justify-between"
                 style={{ color: colorTextTertiary }}
               >
-                <div>{t("layout.setting.multiTab")}</div>
+                <div>{t("layout.settings.multiTab")}</div>
                 <Switch
                   size="small"
                   checked={multiTab}

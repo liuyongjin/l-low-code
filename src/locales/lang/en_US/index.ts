@@ -15,8 +15,8 @@ export default {
       profile: "Profile",
       account: "Account",
     },
-    setting: {
-      setting: "Setting",
+    settings: {
+      settings: "Settings",
       exitFullScreen: "Exit FullScreen",
       fullScreen: "FullScreen",
       mode: "Mode",

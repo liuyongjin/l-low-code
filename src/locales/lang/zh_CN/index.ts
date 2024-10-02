@@ -15,8 +15,8 @@ export default {
       profile: "个人资料",
       account: "账户",
     },
-    setting: {
-      setting: "设置",
+    settings: {
+      settings: "设置",
       exitFullScreen: "退出全屏",
       fullScreen: "全屏",
       mode: "模式",
