@@ -8,8 +8,8 @@ import {
 
 import { usePermissionRoutes } from "@/hooks";
 import { Dashboard } from "@/layouts";
-import { Workbench } from "@/pages/dashboard/workbench/workbench";
-import { Permission } from "@/pages/management/permission/permission";
+// import { Workbench } from "@/pages/dashboard/workbench/workbench";
+// import { Permission } from "@/pages/management/permission/permission";
 import { Login } from "@/pages/sys/login/login";
 import { Page403 } from "@/pages/sys/page-403/page-403";
 import { Page404 } from "@/pages/sys/page-404/page-404";
@@ -45,7 +45,6 @@ const pageNotFoundRoutes = {
 
 export const Router = () => {
   const permissionRoutes = usePermissionRoutes();
-  console.log(permissionRoutes);
 
   const asyncRoutes: RouteObject = {
     path: "/",

@@ -1,5 +1,5 @@
 export default {
-  dashboard: {
+  layout: {
     tab: {
       fullscreen: "FullScreen",
       refresh: "Refresh",
@@ -9,11 +9,21 @@ export default {
       closeLeft: "Close Left",
       closeRight: "Close Right",
     },
-    menu: {
+    user: {
       docs: "Document",
       dashboard: "Dashboard",
       profile: "Profile",
       account: "Account",
+    },
+    setting: {
+      setting: "Setting",
+      exitFullScreen: "Exit FullScreen",
+      fullScreen: "FullScreen",
+      mode: "Mode",
+      presets: "Presets",
+      page: "Page",
+      fixHeader: "Fix header",
+      multiTab: "Multi Tab",
     },
   },
   sys: {

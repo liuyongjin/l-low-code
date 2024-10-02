@@ -60,19 +60,19 @@ export function AccountDropdown() {
     {
       label: (
         <NavLink to="" target="_blank">
-          {t("dashboard.menu.docs")}
+          {t("layout.user.docs")}
         </NavLink>
       ),
       key: "0",
     },
     {
-      label: <NavLink to={HOMEPAGE}>{t("dashboard.menu.dashboard")}</NavLink>,
+      label: <NavLink to={HOMEPAGE}>{t("layout.user.dashboard")}</NavLink>,
       key: "1",
     },
     {
       label: (
         <NavLink to="/management/user/profile">
-          {t("dashboard.menu.profile")}
+          {t("layout.user.profile")}
         </NavLink>
       ),
       key: "2",
@@ -80,7 +80,7 @@ export function AccountDropdown() {
     {
       label: (
         <NavLink to="/management/user/account">
-          {t("dashboard.menu.account")}
+          {t("layout.user.account")}
         </NavLink>
       ),
       key: "3",

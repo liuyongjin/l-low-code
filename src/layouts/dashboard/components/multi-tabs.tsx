@@ -94,17 +94,17 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
   const menuItems = useMemo<MenuProps["items"]>(
     () => [
       {
-        label: t(`dashboard.tab.${MultiTabOperation.FULLSCREEN}`),
+        label: t(`layout.tab.${MultiTabOperation.FULLSCREEN}`),
         key: MultiTabOperation.FULLSCREEN,
         icon: <Iconify icon="material-symbols:fullscreen" size={18} />,
       },
       {
-        label: t(`dashboard.tab.${MultiTabOperation.REFRESH}`),
+        label: t(`layout.tab.${MultiTabOperation.REFRESH}`),
         key: MultiTabOperation.REFRESH,
         icon: <Iconify icon="mdi:reload" size={18} />,
       },
       {
-        label: t(`dashboard.tab.${MultiTabOperation.CLOSE}`),
+        label: t(`layout.tab.${MultiTabOperation.CLOSE}`),
         key: MultiTabOperation.CLOSE,
         icon: <Iconify icon="material-symbols:close" size={18} />,
         disabled: tabs.length === 1,
@@ -113,7 +113,7 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
         type: "divider",
       },
       {
-        label: t(`dashboard.tab.${MultiTabOperation.CLOSELEFT}`),
+        label: t(`layout.tab.${MultiTabOperation.CLOSELEFT}`),
         key: MultiTabOperation.CLOSELEFT,
         icon: (
           <Iconify
@@ -125,7 +125,7 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
         disabled: tabs.findIndex((tab) => tab.key === openDropdownTabKey) === 0,
       },
       {
-        label: t(`dashboard.tab.${MultiTabOperation.CLOSERIGHT}`),
+        label: t(`layout.tab.${MultiTabOperation.CLOSERIGHT}`),
         key: MultiTabOperation.CLOSERIGHT,
         icon: (
           <Iconify icon="material-symbols:tab-close-right-outline" size={18} />
@@ -138,13 +138,13 @@ export const MultiTabs = ({ offsetTop = false }: MultiTabsProps) => {
         type: "divider",
       },
       {
-        label: t(`dashboard.tab.${MultiTabOperation.CLOSEOTHERS}`),
+        label: t(`layout.tab.${MultiTabOperation.CLOSEOTHERS}`),
         key: MultiTabOperation.CLOSEOTHERS,
         icon: <Iconify icon="material-symbols:tab-close-outline" size={18} />,
         disabled: tabs.length === 1,
       },
       {
-        label: t(`dashboard.tab.${MultiTabOperation.CLOSEALL}`),
+        label: t(`layout.tab.${MultiTabOperation.CLOSEALL}`),
         key: MultiTabOperation.CLOSEALL,
         icon: <Iconify icon="mdi:collapse-all-outline" size={18} />,
       },

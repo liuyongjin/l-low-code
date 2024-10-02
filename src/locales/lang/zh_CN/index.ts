@@ -1,5 +1,5 @@
 export default {
-  dashboard: {
+  layout: {
     tab: {
       fullscreen: "内容全屏",
       refresh: "刷新",
@@ -9,11 +9,21 @@ export default {
       closeLeft: "关闭左侧标签页",
       closeRight: "关闭右侧标签页",
     },
-    menu: {
+    user: {
       docs: "文档",
       dashboard: "仪表",
       profile: "个人资料",
       account: "账户",
+    },
+    setting: {
+      setting: "设置",
+      exitFullScreen: "退出全屏",
+      fullScreen: "全屏",
+      mode: "模式",
+      presets: "主题色",
+      page: "页面",
+      fixHeader: "固定头部",
+      multiTab: "多标签页面",
     },
   },
   sys: {

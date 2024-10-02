@@ -45,7 +45,7 @@ export const Nav = () => {
   return (
     <Menu
       // className="h-full !border-none"
-      theme="dark"
+      // theme="dark"
       mode="inline"
       items={items}
       // defaultOpenKeys={openKeys}

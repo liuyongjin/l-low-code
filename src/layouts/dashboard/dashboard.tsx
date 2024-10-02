@@ -26,7 +26,12 @@ export const Dashboard = () => {
   return (
     <Suspense fallback={<CircleLoading />}>
       <Layout className="h-screen">
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          style={{ background: colorBgContainer }}
+        >
           <div className="pt-12" />
           <Nav />
         </Sider>

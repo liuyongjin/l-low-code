@@ -2,27 +2,27 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 
-import { ThemeColorPresets, ThemeLayout, ThemeMode } from "@/types/enum";
+import { ThemeColorPresets, ThemeMode } from "@/types/enum";
 
 import { RootState } from "./store";
 
 const initialState = {
-  themeColorPresets: ThemeColorPresets.Default,
   themeMode: ThemeMode.Light,
-  themeLayout: ThemeLayout.Vertical,
-  themeStretch: false,
-  breadCrumb: true,
+  fixHeader: false,
+  themeColorPresets: ThemeColorPresets.Default,
+  // themeLayout: ThemeLayout.Vertical,
+  // themeStretch: false,
+  // breadCrumb: true,
   multiTab: true,
 };
+
+export type settingType = Partial<typeof initialState>;
 
 export const settingSlice = createSlice({
   name: "setting",
   initialState,
   reducers: {
-    setSettings: (
-      state,
-      action: PayloadAction<Partial<typeof initialState>>,
-    ) => {
+    setSetting: (state, action: PayloadAction<settingType>) => {
       return {
         ...state,
         ...action.payload,
@@ -37,7 +37,7 @@ export const settingSlice = createSlice({
   },
 });
 
-export const { setSettings } = settingSlice.actions;
+export const { setSetting } = settingSlice.actions;
 
 export const useSetting = () =>
   useSelector((state: RootState) => state.setting);
