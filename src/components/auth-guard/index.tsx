@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-import PageError from "@/pages/sys/page-error/page-error";
+import PageError from "@/pages/sys/page-error";
 
 // interface AuthGuardProps extends PropsWithChildren {}
 

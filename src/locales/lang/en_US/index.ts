@@ -9,7 +9,7 @@ export default {
       closeLeft: "Close Left",
       closeRight: "Close Right",
     },
-    user: {
+    account: {
       docs: "Document",
       dashboard: "Dashboard",
       profile: "Profile",

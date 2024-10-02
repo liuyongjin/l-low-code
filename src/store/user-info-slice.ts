@@ -31,6 +31,7 @@ export const userInfoSlice = createSlice({
       setItem(StorageEnum.User, userInfo);
       return userInfo;
     },
+    // clearUserInfoAndToken
   },
 });
 

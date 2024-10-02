@@ -10,10 +10,10 @@ import { usePermissionRoutes } from "@/hooks";
 import { Dashboard } from "@/layouts";
 // import { Workbench } from "@/pages/dashboard/workbench/workbench";
 // import { Permission } from "@/pages/management/permission/permission";
-import { Login } from "@/pages/sys/login/login";
-import { Page403 } from "@/pages/sys/page-403/page-403";
-import { Page404 } from "@/pages/sys/page-404/page-404";
-import { Page500 } from "@/pages/sys/page-500/page-500";
+import { Login } from "@/pages/sys/login";
+import { Page403 } from "@/pages/sys/page-403";
+import { Page404 } from "@/pages/sys/page-404";
+import { Page500 } from "@/pages/sys/page-500";
 
 const loginRoutes = {
   path: "login",
