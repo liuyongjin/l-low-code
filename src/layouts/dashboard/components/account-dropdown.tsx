@@ -2,11 +2,12 @@ import { Divider, MenuProps } from "antd";
 import Dropdown, { DropdownProps } from "antd/es/dropdown/dropdown";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { IconButton, Iconify } from "@/components";
 import { useRouter, useThemeToken } from "@/hooks";
-import { useUserInfo } from "@/store";
+import { clearUserInfo, useUserInfo } from "@/store";
 
 const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
@@ -15,7 +16,9 @@ const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
  */
 export function AccountDropdown() {
   const { replace } = useRouter();
-  const { username, email, avatar } = useUserInfo();
+  const { username, email } = useUserInfo();
+  const dispatch = useDispatch();
+
   //   const { clearUserInfoAndToken } = useUserActions();
   //   const { backToLogin } = useLoginStateContext();
   const { t } = useTranslation();
@@ -23,7 +26,7 @@ export function AccountDropdown() {
     try {
       // todo const logoutMutation = useMutation(userService.logout);
       // todo logoutMutation.mutateAsync();
-      //   clearUserInfoAndToken();
+      dispatch(clearUserInfo({}));
       //   backToLogin();
     } catch (error) {
       console.log(error);

@@ -8,15 +8,19 @@ import { setUserInfo } from "@/store";
 
 const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
-const initialValues = { username: "admin", password: "123456", remember: true };
+const initialValues = {
+  username: "admin",
+  password: "456456465",
+  remember: true,
+};
 
 export const LoginForm = () => {
-  const { replace, push } = useRouter();
+  const { replace } = useRouter();
   const dispatch = useDispatch();
 
   // const [loading, setLoading] = useState(false);
   const handleFinish = (values: typeof initialValues) => {
-    console.log("Received values of form: ", values);
+    // console.log("Received values of form: ", values);
     dispatch(
       setUserInfo({
         permissions: [

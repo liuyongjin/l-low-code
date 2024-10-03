@@ -30,6 +30,12 @@ function transformToPermissionRoutes(
       component,
       children = [],
     } = permission;
+    // const importComponent =
+    //   componentName && component
+    //     ? ((await pages[`${ENTRY_PATH}${component}`]()) as {
+    //         [key: string]: ComponentType;
+    //       })
+    //     : {};
     const route: RouteObject = {
       path: path,
       id: id,
@@ -42,6 +48,8 @@ function transformToPermissionRoutes(
         // }
         return { icon, label };
       },
+      // Component:
+      //   componentName && component ? importComponent[componentName] : null,
       async lazy() {
         if (componentName && component) {
           // const importComponent = await import(`${ENTRY_PATH}${component}`);
@@ -82,5 +90,5 @@ export function usePermissionRoutes() {
   const { permissions = [] } = useUserInfo();
   return useCreation(() => {
     return transformToPermissionRoutes(permissions);
-  }, []);
+  }, [permissions]);
 }

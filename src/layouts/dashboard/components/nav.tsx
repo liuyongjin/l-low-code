@@ -45,7 +45,7 @@ export const Nav = () => {
 
   useEffect(() => {
     const openKeys = matches
-      .filter((match) => match.pathname !== "/" && match.data.icon)
+      .filter((match) => match.pathname !== "/" && match.data?.icon)
       .map((match) => match.pathname);
     setOpenKeys(openKeys);
   }, [matches]);

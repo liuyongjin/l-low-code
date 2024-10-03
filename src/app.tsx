@@ -6,7 +6,7 @@ import { MotionLazy } from "./components";
 
 function App() {
   return (
-    <AntdApp>
+    <AntdApp className="h-full">
       <MotionLazy>
         {/* <Helmet>
         <title>Slash Admin</title>
