@@ -1,4 +1,3 @@
-import { CloseOutlined } from "@ant-design/icons";
 import { useFullscreen } from "ahooks";
 import { Button, Card, Drawer, Switch } from "antd";
 import { m } from "framer-motion";
@@ -67,15 +66,16 @@ export function SettingButton() {
       <div className="flex items-center justify-center">
         <m.div
           animate={{
-            rotate: [0, drawerOpen ? 0 : 360],
+            // rotate: [0, drawerOpen ? 0 : 360],
+            rotate: [0, 360],
           }}
           transition={{
             duration: 12,
             ease: "linear",
             repeat: Infinity,
           }}
-          whileTap="tap"
-          whileHover="hover"
+          // whileTap="tap"
+          // whileHover="hover"
           // variants={varHover(1.05)}
           onClick={() => setDrawerOpen(true)}
         >
@@ -99,9 +99,13 @@ export function SettingButton() {
         extra={
           <IconButton
             onClick={() => setDrawerOpen(false)}
-            className="h-9 w-9 hover:scale-105"
+            className="h-10 w-10"
           >
-            <CloseOutlined className="text-gray-400" />
+            <Iconify
+              className="text-gray-400"
+              icon="material-symbols:close"
+              size={24}
+            />
           </IconButton>
         }
         footer={
@@ -195,7 +199,7 @@ export function SettingButton() {
                       }}
                     /> */}
                     <Iconify
-                      icon="mdi:circle"
+                      icon="material-symbols:circle"
                       size={themeColorPresets === preset ? 24 : 12}
                     />
                   </div>

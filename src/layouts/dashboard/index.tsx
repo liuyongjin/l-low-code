@@ -1,10 +1,9 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Flex, Layout, theme } from "antd";
 import { Suspense } from "react";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { CircleLoading } from "@/components";
+import { CircleLoading, Iconify } from "@/components";
 import { MultiTabsProvider } from "@/provider";
 import { useSettings } from "@/store";
 
@@ -17,7 +16,6 @@ const { Header: AntdHeader, Sider, Content } = Layout;
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const { multiTab } = useSettings();
-  // const [multiTab, setMultiTab] = useState(true);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -40,7 +38,13 @@ export const Dashboard = () => {
             <Flex gap="middle">
               <Button
                 type="text"
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                icon={
+                  collapsed ? (
+                    <Iconify icon="ant-design:menu-unfold-outlined" size={18} />
+                  ) : (
+                    <Iconify icon="ant-design:menu-fold-outlined" size={18} />
+                  )
+                }
                 onClick={() => setCollapsed(!collapsed)}
                 style={{
                   fontSize: "16px",

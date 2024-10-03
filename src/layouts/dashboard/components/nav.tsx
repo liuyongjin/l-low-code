@@ -1,35 +1,51 @@
-import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
+import { useCreation } from "ahooks";
 import { Menu, MenuProps } from "antd";
-import { useEffect, useState } from "react";
-import { useLocation, useMatches, useNavigate } from "react-router-dom";
+import { t } from "i18next";
+import { ReactNode, useEffect, useState } from "react";
+import { UIMatch, useLocation, useMatches } from "react-router-dom";
+
+import { Iconify } from "@/components";
+import { useRouter } from "@/hooks";
+import { useUserInfo } from "@/store";
+import { Permission } from "@/types/entity";
 
 type MenuItem = Required<MenuProps>["items"][number];
-
-const items: MenuItem[] = [
-  {
-    key: "/dashboard",
-    label: "Dashboard",
-    icon: <MailOutlined />,
-    children: [{ key: "/dashboard/workbench", label: "Workbench" }],
-  },
-  {
-    key: "/management",
-    label: "Management",
-    icon: <AppstoreOutlined />,
-    children: [{ key: "/management/permission", label: "Permission" }],
-  },
-];
+// type MenuItem = GetProp<MenuProps, "items">[number];
 
 export const Nav = () => {
-  const navigate = useNavigate();
+  const { permissions = [] } = useUserInfo();
+
+  const formatMenuList = (items: Permission[], level: number = 0) => {
+    return items.map((item) => {
+      const menu: MenuItem & {
+        children?: MenuItem[];
+      } = {
+        key: item.id,
+        label: t(item.label),
+      };
+      if (level === 0 && item.icon) {
+        menu.icon = <Iconify icon={item.icon} size={24} />;
+      }
+      if (item?.children?.length) {
+        menu.children = formatMenuList(item.children, level + 1) || [];
+      }
+      return menu;
+    });
+  };
+
+  const menuList = useCreation(() => {
+    return formatMenuList(permissions);
+  }, [permissions]);
+
+  const { push } = useRouter();
   const { pathname } = useLocation();
-  const matches = useMatches();
+  const matches = useMatches() as UIMatch<{ icon?: ReactNode }>[];
 
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
   useEffect(() => {
     const openKeys = matches
-      .filter((match) => match.pathname !== "/")
+      .filter((match) => match.pathname !== "/" && match.data.icon)
       .map((match) => match.pathname);
     setOpenKeys(openKeys);
   }, [matches]);
@@ -39,23 +55,18 @@ export const Nav = () => {
   };
 
   const handleClick: MenuProps["onClick"] = ({ key }) => {
-    navigate(key);
+    push(key);
   };
 
   return (
     <Menu
-      // className="h-full !border-none"
       // theme="dark"
       mode="inline"
-      items={items}
-      // defaultOpenKeys={openKeys}
-      // defaultSelectedKeys={[pathname]}
-      // selectedKeys={[pathname]}
-      // openKeys={openKeys}
-      // onOpenChange={handleOpenChange}
+      items={menuList}
+      openKeys={openKeys}
+      selectedKeys={[pathname]}
+      onOpenChange={handleOpenChange}
       onClick={handleClick}
-      // style={menuStyle}
-      // inlineCollapsed={collapsed}
     />
   );
 };

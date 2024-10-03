@@ -16,7 +16,10 @@ const pages = import.meta.glob("/src/pages/**/*.tsx");
 //   return pages[`${entryPath}${path}`];
 // }
 
-function transformToPermissionRoutes(permissions: Permission[]) {
+function transformToPermissionRoutes(
+  permissions: Permission[],
+  level: number = 0,
+) {
   return permissions.map((permission) => {
     const {
       id,
@@ -31,6 +34,12 @@ function transformToPermissionRoutes(permissions: Permission[]) {
       path: path,
       id: id,
       loader: () => {
+        // const loaderData: any = {
+        //   label,
+        // };
+        // if (level === 0) {
+        //   loaderData.icon = icon;
+        // }
         return { icon, label };
       },
       async lazy() {
@@ -58,7 +67,7 @@ function transformToPermissionRoutes(permissions: Permission[]) {
     // }
 
     if (!isEmpty(children)) {
-      route.children = transformToPermissionRoutes(children);
+      route.children = transformToPermissionRoutes(children, level + 1);
       // route.children.unshift({
       //   index: true,
       //   element: <Navigate to={children[0].route} replace />,

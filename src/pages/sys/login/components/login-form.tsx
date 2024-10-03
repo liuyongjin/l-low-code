@@ -1,8 +1,8 @@
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Flex, Form, Input } from "antd";
 import { t } from "i18next";
 import { useDispatch } from "react-redux";
 
+import { Iconify } from "@/components";
 import { useRouter } from "@/hooks";
 import { setUserInfo } from "@/store";
 
@@ -21,16 +21,14 @@ export const LoginForm = () => {
       setUserInfo({
         permissions: [
           {
-            // id: "9100714781927703",
-            label: "sys.menu.dashboard",
-            icon: "ic-analysis",
+            label: "layout.menu.dashboard",
+            icon: "material-symbols:data-thresholding-outline-rounded",
             path: "dashboard",
             id: "/dashboard",
             children: [
               {
-                // id: "8426999229400979",
                 parentId: "/dashboard",
-                label: "sys.menu.workbench",
+                label: "layout.menu.workbench",
                 path: "workbench",
                 id: "/dashboard/workbench",
                 componentName: "Workbench",
@@ -39,16 +37,14 @@ export const LoginForm = () => {
             ],
           },
           {
-            // id: "0901673425580518",
-            label: "sys.menu.management",
-            icon: "ic-management",
+            label: "layout.menu.management",
+            icon: "material-symbols:admin-panel-settings-rounded",
             path: "management",
             id: "/management",
             children: [
               {
-                // id: "4359580910369984",
                 parentId: "/management",
-                label: "sys.menu.system.permission",
+                label: "layout.menu.permission",
                 path: "permission",
                 id: "/management/permission",
                 componentName: "Permission",
@@ -68,14 +64,17 @@ export const LoginForm = () => {
         name="username"
         rules={[{ required: true, message: "Please input your Username!" }]}
       >
-        <Input prefix={<UserOutlined />} placeholder="admin" />
+        <Input
+          prefix={<Iconify icon="ant-design:user-outlined" size={18} />}
+          placeholder="admin"
+        />
       </Form.Item>
       <Form.Item
         name="password"
         rules={[{ required: true, message: "Please input your Password!" }]}
       >
         <Input
-          prefix={<LockOutlined />}
+          prefix={<Iconify icon="ant-design:lock-outlined" size={18} />}
           autoComplete="off"
           type="password"
           placeholder="123456"

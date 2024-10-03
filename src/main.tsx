@@ -11,11 +11,11 @@ import App from "./app.tsx";
 import { store } from "./store/store.ts";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <HelmetProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </HelmetProvider>
-  </StrictMode>,
+  // <StrictMode>
+  <HelmetProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </HelmetProvider>,
+  // </StrictMode>,
 );

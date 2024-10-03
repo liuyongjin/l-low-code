@@ -1,5 +1,11 @@
 export default {
   layout: {
+    menu: {
+      dashboard: "Dashboard",
+      workbench: "Workbench",
+      management: "Management",
+      permission: "Permission",
+    },
     tab: {
       fullscreen: "FullScreen",
       refresh: "Refresh",

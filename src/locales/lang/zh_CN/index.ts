@@ -1,5 +1,11 @@
 export default {
   layout: {
+    menu: {
+      dashboard: "仪表",
+      workbench: "工作台",
+      management: "管理",
+      permission: "权限",
+    },
     tab: {
       fullscreen: "内容全屏",
       refresh: "刷新",

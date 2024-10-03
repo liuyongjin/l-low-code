@@ -31,7 +31,7 @@ export function LocalePicker() {
       menu={{ items: localeList, onClick: (e) => setLocale(e.key as Locale) }}
     >
       <div>
-        <IconButton className="h-10 w-10 hover:scale-105">
+        <IconButton className="h-10 w-10">
           <Iconify icon="material-symbols:language" size={24} />
         </IconButton>
       </div>
