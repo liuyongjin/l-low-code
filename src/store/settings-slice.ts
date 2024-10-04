@@ -23,13 +23,8 @@ export const settingsSlice = createSlice({
   initialState,
   reducers: {
     setSettings: (state, action: PayloadAction<settingType>) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
-      // state.multiTab = action.payload.multiTab;
-      // return state;
-      // state = {
+      Object.assign(state, action.payload)
+      // return {
       //   ...state,
       //   ...action.payload,
       // };

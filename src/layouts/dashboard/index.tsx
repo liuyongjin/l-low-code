@@ -15,7 +15,7 @@ const { Header: AntdHeader, Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const { multiTab } = useSettings();
+  const { multiTab, themeMode } = useSettings();
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -28,6 +28,7 @@ export const Dashboard = () => {
         trigger={null}
         collapsible
         collapsed={collapsed}
+        // theme={themeMode}
         style={{ background: colorBgContainer }}
       >
         <div className="pt-12" />

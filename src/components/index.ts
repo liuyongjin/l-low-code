@@ -1,3 +1,4 @@
+export * from "./antd-config-provider";
 export * from "./auth-guard";
 export * from "./circle-loading";
 export * from "./icon-button";
