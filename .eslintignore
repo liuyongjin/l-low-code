@@ -1,0 +1,14 @@
+*.sh
+node_modules
+**/*.svg
+**/*.md
+**/*.html
+**/*.png
+.vscode
+.idea
+dist
+/public
+/docs
+.husky
+/bin
+Dockerfile

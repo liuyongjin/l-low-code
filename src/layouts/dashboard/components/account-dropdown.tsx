@@ -26,7 +26,7 @@ export function AccountDropdown() {
     try {
       // todo const logoutMutation = useMutation(userService.logout);
       // todo logoutMutation.mutateAsync();
-      dispatch(clearUserInfo({}));
+      dispatch(clearUserInfo());
       //   backToLogin();
     } catch (error) {
       console.log(error);
