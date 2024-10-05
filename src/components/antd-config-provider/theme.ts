@@ -5,19 +5,19 @@ import { ThemeColorPresets } from "@/types/enum";
 /**
  * Antd theme editor: https://ant.design/theme-editor-cn
  */
-const customThemeTokenConfig: ThemeConfig["token"] = {
+const customThemeToken: ThemeConfig["token"] = {
   // colorSuccess: '#22c55e',
   // colorWarning: '#ff7849',
   // colorError: '#ff5630',
   // colorInfo: '#00b8d9',
   // // 线性化
-  // wireframe: false,
+  // wireframe: true,
   // borderRadiusSM: 2,
   // borderRadius: 4,
   // borderRadiusLG: 8,
 };
 
-const customComponentConfig: ThemeConfig["components"] = {
+const customComponent: ThemeConfig["components"] = {
   // Breadcrumb: {
   //   fontSize: 12,
   //   separatorMargin: 4,
@@ -28,6 +28,12 @@ const customComponentConfig: ThemeConfig["components"] = {
   //   itemColor: 'rgb(145, 158, 171)',
   //   motionDurationMid: '0.125s',
   //   motionDurationSlow: '0.125s',
+  // },
+  // Layout: {
+  //   siderBg: "rgb(255, 255, 255)",
+  // },
+  // Slider: {
+  //   algorithm: theme.defaultAlgorithm,
   // },
 };
 
@@ -58,12 +64,14 @@ const themeModeToken: Record<"dark" | "light", ThemeConfig> = {
       // Notification: {},
     },
   },
-  light: {},
+  light: {
+    components: {
+      Layout: {
+        headerBg: "rgb(255, 255, 255)",
+        siderBg: "rgb(255, 255, 255)",
+      },
+    },
+  },
 };
 
-export {
-  colorPrimarys,
-  customComponentConfig,
-  customThemeTokenConfig,
-  themeModeToken,
-};
+export { colorPrimarys, customComponent, customThemeToken, themeModeToken };

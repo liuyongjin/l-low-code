@@ -1,12 +1,13 @@
 // import { IconButton, Iconify } from "@/components/icon";
 // import LocalePicker from "@/components/locale-picker";
 
+// import { createStyles } from "antd-style";
+
 import { IconButton, Iconify } from "@/components";
 
 import { AccountDropdown } from "./account-dropdown";
 import { LocalePicker } from "./locale-picker";
 import { SettingButton } from "./setting-button";
-
 // import { useSettingss } from "@/store/settingStore";
 // import { useResponsive, useThemeToken } from "@/theme/hooks";
 // import AccountDropdown from "../_common/account-dropdown";
@@ -18,18 +19,21 @@ type HeaderProps = {
   className?: string;
   offsetTop?: boolean;
 };
+
 export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
   // const { themeLayout, breadCrumb } = useSettingss();
+  // const { styles } = useStyles();
 
   return (
     <>
       <header className={`z-20 w-full flex items-center ${className}`}>
         <div
-          className="flex flex-grow items-center justify-between px-4 text-gray backdrop-blur xl:px-6 2xl:px-10"
-          style={{
-            // height: offsetTop ? OFFSET_HEADER_HEIGHT : HEADER_HEIGHT,
-            transition: "height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-          }}
+          className="flex flex-grow items-center justify-between px-4 text-gray"
+          // style={{
+          //   // height: offsetTop ? OFFSET_HEADER_HEIGHT : HEADER_HEIGHT,
+          //   transition: "height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+          // }}
+          // className={styles.bg}
         >
           <div className="flex items-baseline">
             {/* <div className="ml-4 hidden md:block">
@@ -51,3 +55,14 @@ export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
     </>
   );
 };
+
+// const useStyles = createStyles(({ css }) => {
+//   return {
+//     // bg: css`
+//     //   background: red;
+//     // `,
+//     bg: {
+//       background: "red",
+//     },
+//   };
+// });

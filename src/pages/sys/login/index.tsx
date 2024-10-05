@@ -6,7 +6,7 @@ export const Login = () => {
   return (
     <Layout className="flex flex-row items-center h-full">
       <div className="flex-1"></div>
-      <div className="w-96 p-4 m-4 bg-white rounded-md">
+      <div className="w-96 p-4 m-4 rounded-md">
         <LoginForm />
       </div>
     </Layout>

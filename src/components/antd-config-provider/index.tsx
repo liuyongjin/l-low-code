@@ -1,6 +1,7 @@
 import "antd/dist/reset.css";
 
 import { ConfigProvider, theme } from "antd";
+// import { StyleProvider } from "antd-style";
 import { PropsWithChildren } from "react";
 
 import { useLocale } from "@/hooks";
@@ -9,8 +10,8 @@ import { ThemeMode } from "@/types/enum";
 
 import {
   colorPrimarys,
-  customComponentConfig,
-  customThemeTokenConfig,
+  customComponent,
+  customThemeToken,
   themeModeToken,
 } from "./theme";
 
@@ -32,11 +33,11 @@ export function AntdConfigProvider({ children }: PropsWithChildren) {
         cssVar: true,
         token: {
           colorPrimary,
-          ...customThemeTokenConfig,
+          ...customThemeToken,
           ...themeModeToken[themeMode].token,
         },
         components: {
-          ...customComponentConfig,
+          ...customComponent,
           ...themeModeToken[themeMode].components,
         },
         algorithm,
