@@ -2,37 +2,45 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 
-import { ThemeColorPresets, ThemeMode } from "@/types/enum";
+import { StorageEnum, ThemeColorPresets, ThemeMode } from "@/types/enum";
+import { getItem, removeItem, setItem } from "@/utils";
 
 import { RootState } from "./store";
 
-const initialState = {
+type SettingsState = {
+  themeMode: ThemeMode;
+  fixHeader: boolean;
+  themeColorPresets: ThemeColorPresets;
+  multiTab: boolean;
+};
+
+const initialState: SettingsState = {
   themeMode: ThemeMode.Light,
   fixHeader: false,
   themeColorPresets: ThemeColorPresets.Default,
-  // themeLayout: ThemeLayout.Vertical,
-  // themeStretch: false,
-  // breadCrumb: true,
   multiTab: true,
 };
 
-export type settingType = Partial<typeof initialState>;
-
 export const settingsSlice = createSlice({
   name: "settings",
-  initialState,
+  initialState: getItem<SettingsState>(StorageEnum.Settings) || initialState,
   reducers: {
-    setSettings: (state, action: PayloadAction<settingType>) => {
-      Object.assign(state, action.payload)
+    setSettings: (state, action: PayloadAction<SettingsState>) => {
+      const newState = Object.assign(state, action.payload);
+      // console.log(JSON.stringify(newState));
+      setItem(StorageEnum.Settings, newState);
       // return {
       //   ...state,
       //   ...action.payload,
       // };
     },
+    clearSettings() {
+      removeItem(StorageEnum.Settings);
+    },
   },
 });
 
-export const { setSettings } = settingsSlice.actions;
+export const { setSettings, clearSettings } = settingsSlice.actions;
 
 export const useSettings = () =>
   useSelector((state: RootState) => state.settings);

@@ -7,13 +7,10 @@ import { NavLink } from "react-router-dom";
 
 import { IconButton, Iconify } from "@/components";
 import { useRouter, useThemeToken } from "@/hooks";
-import { clearUserInfo, useUserInfo } from "@/store";
+import { clearSettings, clearUserInfo, useUserInfo } from "@/store";
 
 const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
-/**
- * Account Dropdown
- */
 export function AccountDropdown() {
   const { replace } = useRouter();
   const { username, email } = useUserInfo();
@@ -27,6 +24,7 @@ export function AccountDropdown() {
       // todo const logoutMutation = useMutation(userService.logout);
       // todo logoutMutation.mutateAsync();
       dispatch(clearUserInfo());
+      dispatch(clearSettings());
       //   backToLogin();
     } catch (error) {
       console.log(error);

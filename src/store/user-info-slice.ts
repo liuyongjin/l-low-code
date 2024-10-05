@@ -7,7 +7,7 @@ import { getItem, removeItem, setItem } from "@/utils";
 
 import { RootState } from "./store";
 
-interface UserInfoState {
+type UserInfoState = {
   id?: string;
   email?: string;
   username?: string;
@@ -17,7 +17,7 @@ interface UserInfoState {
   status?: string;
   permissions?: any;
   token?: string;
-}
+};
 
 const initialState: UserInfoState = {
   id: "xxxxqe",
