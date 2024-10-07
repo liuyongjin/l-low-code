@@ -7,26 +7,39 @@ import { getItem, removeItem, setItem } from "@/utils";
 
 import { RootState } from "./store";
 
+interface Permission {
+  label?: string;
+  icon?: string;
+  path?: string;
+  id: string;
+  children?: Array<{
+    parentId: string;
+    label?: string;
+    path?: string;
+    id: string;
+    componentName?: string;
+    component?: string;
+  }>;
+}
+
 type UserInfoState = {
   id?: string;
-  email?: string;
   username?: string;
-  password?: string;
-  avatar?: string;
-  role?: any;
-  status?: string;
-  permissions?: any;
+  role?: {
+    id: string;
+    name?: string;
+  };
+  permissions?: Permission[];
   token?: string;
 };
 
 const initialState: UserInfoState = {
   id: "xxxxqe",
-  email: "xxxxqe",
   username: "xxxxqe",
-  password: "xxxxqe",
-  avatar: "xxxxqe",
-  role: {},
-  status: "ENABLE",
+  role: {
+    id: "id",
+    name: "name",
+  },
   permissions: [],
   token: "token",
 };

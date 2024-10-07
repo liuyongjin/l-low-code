@@ -2,6 +2,7 @@ import { Button, Checkbox, Flex, Form, Input } from "antd";
 import { t } from "i18next";
 import { useDispatch } from "react-redux";
 
+import { useLogin } from "@/api/userService";
 import { Iconify } from "@/components";
 import { useRouter } from "@/hooks";
 import { setUserInfo } from "@/store";
@@ -17,46 +18,23 @@ const initialValues = {
 export const LoginForm = () => {
   const { replace } = useRouter();
   const dispatch = useDispatch();
+  const { refetch } = useLogin();
+  // console.log(data);
 
   // const [loading, setLoading] = useState(false);
-  const handleFinish = (values: typeof initialValues) => {
-    // console.log("Received values of form: ", values);
+  const handleFinish = async (values: typeof initialValues) => {
+    console.log("Received values of form: ", values);
+    // const user = await login({
+    //   username: "admin",
+    //   password: "123456789",
+    // });
+    // console.log(user);
+    const userInfo = await refetch();
+    const { permissions } = userInfo.data;
+    // console.log(permissions);
     dispatch(
       setUserInfo({
-        permissions: [
-          {
-            label: "layout.menu.dashboard",
-            icon: "material-symbols:data-thresholding-outline-rounded",
-            path: "dashboard",
-            id: "/dashboard",
-            children: [
-              {
-                parentId: "/dashboard",
-                label: "layout.menu.workbench",
-                path: "workbench",
-                id: "/dashboard/workbench",
-                componentName: "Workbench",
-                component: "/dashboard/workbench/index.tsx",
-              },
-            ],
-          },
-          {
-            label: "layout.menu.management",
-            icon: "material-symbols:admin-panel-settings-rounded",
-            path: "management",
-            id: "/management",
-            children: [
-              {
-                parentId: "/management",
-                label: "layout.menu.permission",
-                path: "permission",
-                id: "/management/permission",
-                componentName: "Permission",
-                component: "/management/permission/index.tsx",
-              },
-            ],
-          },
-        ],
+        permissions,
       }),
     );
     replace(HOMEPAGE);
