@@ -3,6 +3,9 @@
 
 // import { createStyles } from "antd-style";
 
+import { Button, Layout } from "antd";
+import { Dispatch, SetStateAction } from "react";
+
 import { IconButton, Iconify } from "@/components";
 
 import { AccountDropdown } from "./account-dropdown";
@@ -14,19 +17,36 @@ import { SettingButton } from "./setting-button";
 // import BreadCrumb from "../_common/bread-crumb";
 // import SettingButton from "../_common/setting-button";
 // import { HEADER_HEIGHT, OFFSET_HEADER_HEIGHT } from "./config";
-
+const { Header: AntdHeader } = Layout;
 type HeaderProps = {
   className?: string;
-  offsetTop?: boolean;
+  collapsed: boolean;
+  onCollapsed: Dispatch<SetStateAction<boolean>>;
 };
 
-export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
+export const Header = ({
+  className = "",
+  collapsed = false,
+  onCollapsed,
+}: HeaderProps) => {
   // const { themeLayout, breadCrumb } = useSettingss();
   // const { styles } = useStyles();
 
   return (
-    <>
+    <AntdHeader className="p-0 z-50">
       <header className={`z-20 w-full flex items-center ${className}`}>
+        <Button
+          className="!w-16 h-16"
+          type="text"
+          icon={
+            collapsed ? (
+              <Iconify icon="ant-design:menu-unfold-outlined" size={18} />
+            ) : (
+              <Iconify icon="ant-design:menu-fold-outlined" size={18} />
+            )
+          }
+          onClick={() => onCollapsed(!collapsed)}
+        />
         <div
           className="flex flex-grow items-center justify-between px-4 text-gray"
           // style={{
@@ -52,7 +72,7 @@ export const Header = ({ className = "", offsetTop = false }: HeaderProps) => {
           </div>
         </div>
       </header>
-    </>
+    </AntdHeader>
   );
 };
 

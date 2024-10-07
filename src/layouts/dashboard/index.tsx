@@ -1,10 +1,10 @@
-import { Button, Flex, Layout } from "antd";
+import { Affix, Layout } from "antd";
 import { createStyles } from "antd-style";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { CircleLoading, Iconify } from "@/components";
+import { CircleLoading } from "@/components";
 import { MultiTabsProvider } from "@/provider";
 import { useSettings } from "@/store";
 
@@ -12,12 +12,13 @@ import { Header } from "./components/header";
 import { MultiTabs } from "./components/multi-tabs";
 import { Nav } from "./components/nav";
 
-const { Header: AntdHeader, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 export const Dashboard = () => {
   const { styles } = useStyles();
-  const { multiTab } = useSettings();
+  const { fixHeader, multiTab } = useSettings();
   const [collapsed, setCollapsed] = useState(false);
+  const container = useRef<HTMLDivElement | null>(null);
 
   return (
     <Layout className="h-screen">
@@ -25,25 +26,17 @@ export const Dashboard = () => {
         <div className="pt-12" />
         <Nav />
       </Sider>
-      <Layout>
-        <AntdHeader className="p-0">
-          <Flex gap="middle">
-            <Button
-              className="!w-16 h-16"
-              type="text"
-              icon={
-                collapsed ? (
-                  <Iconify icon="ant-design:menu-unfold-outlined" size={18} />
-                ) : (
-                  <Iconify icon="ant-design:menu-fold-outlined" size={18} />
-                )
-              }
-              onClick={() => setCollapsed(!collapsed)}
-            />
-            <Header />
-          </Flex>
-        </AntdHeader>
-        <Content>
+      <Layout className="overflow-auto" ref={container}>
+        {fixHeader ? (
+          <Affix offsetTop={0} target={() => container.current}>
+            <div>
+              <Header collapsed={collapsed} onCollapsed={setCollapsed} />
+            </div>
+          </Affix>
+        ) : (
+          <Header collapsed={collapsed} onCollapsed={setCollapsed} />
+        )}
+        <Content className="z-1">
           {multiTab ? (
             <div className="p-4 rounded-lg min-h-80">
               <MultiTabsProvider>

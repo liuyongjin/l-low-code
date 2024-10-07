@@ -18,7 +18,7 @@ const initialValues = {
 export const LoginForm = () => {
   const { replace } = useRouter();
   const dispatch = useDispatch();
-  const { refetch } = useLogin();
+  const login = useLogin();
   // console.log(data);
 
   // const [loading, setLoading] = useState(false);
@@ -29,9 +29,8 @@ export const LoginForm = () => {
     //   password: "123456789",
     // });
     // console.log(user);
-    const userInfo = await refetch();
-    const { permissions } = userInfo.data;
-    // console.log(permissions);
+    const userInfo = await login(values);
+    const { permissions } = userInfo;
     dispatch(
       setUserInfo({
         permissions,

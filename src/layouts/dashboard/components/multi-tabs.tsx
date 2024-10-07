@@ -279,7 +279,7 @@ export const MultiTabs = () => {
 
   const renderTabBar: TabsProps["renderTabBar"] = () => {
     return (
-      <div className="z-20 w-full">
+      <div className="z-2 w-full">
         <div className="flex w-full">
           <div ref={scrollContainer} className="hide-scrollbar flex w-full">
             {tabs.map((tab, index) => (

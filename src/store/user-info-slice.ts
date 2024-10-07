@@ -22,7 +22,7 @@ interface Permission {
   }>;
 }
 
-type UserInfoState = {
+export type UserInfoState = {
   id?: string;
   username?: string;
   role?: {

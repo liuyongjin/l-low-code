@@ -16,7 +16,7 @@ type SettingsState = {
 
 const initialState: SettingsState = {
   themeMode: ThemeMode.Light,
-  fixHeader: false,
+  fixHeader: true,
   themeColorPresets: ThemeColorPresets.Default,
   multiTab: true,
 };

@@ -1,3 +1,3 @@
 export const Workbench = () => {
-  return <div>Workbench</div>;
+  return <div style={{ height: 1000 }}>Workbench</div>;
 };
