@@ -1,10 +1,12 @@
 {
   "layout": {
     "menu": {
+      "list": "列表",
+      "table-list": "查询表格",
       "dashboard": "仪表",
       "workbench": "工作台",
       "management": "管理",
-      "permission": "权限"
+      "permissions": "权限"
     },
     "tab": {
       "fullscreen": "内容全屏",

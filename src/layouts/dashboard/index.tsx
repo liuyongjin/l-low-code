@@ -27,15 +27,15 @@ export const Dashboard = () => {
         <Nav />
       </Sider>
       <Layout className="overflow-auto" ref={container}>
-        {fixHeader ? (
-          <Affix offsetTop={0} target={() => container.current}>
-            <div>
-              <Header collapsed={collapsed} onCollapsed={setCollapsed} />
-            </div>
-          </Affix>
-        ) : (
-          <Header collapsed={collapsed} onCollapsed={setCollapsed} />
-        )}
+        <Affix
+          offsetTop={0}
+          // todo: fix warning for 'Added non-passive event listener'
+          target={() => (fixHeader ? container.current : window)}
+        >
+          <div>
+            <Header collapsed={collapsed} onCollapsed={setCollapsed} />
+          </div>
+        </Affix>
         <Content className="z-1">
           {multiTab ? (
             <div className="p-4 rounded-lg min-h-80">

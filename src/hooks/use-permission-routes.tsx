@@ -7,7 +7,7 @@ import { RouteObject } from "react-router-dom";
 // import { CircleLoading } from "@/components";
 import { ENTRY_PATH } from "@/constants";
 import { useUserInfo } from "@/store";
-import { Permission } from "@/types/entity";
+import { MenuEntity } from "@/types/entity";
 
 // const entryPath = "/src/pages";
 const pages = import.meta.glob("/src/pages/**/*.tsx");
@@ -16,11 +16,8 @@ const pages = import.meta.glob("/src/pages/**/*.tsx");
 //   return pages[`${entryPath}${path}`];
 // }
 
-function transformToPermissionRoutes(
-  permissions: Permission[],
-  level: number = 0,
-) {
-  return permissions.map((permission) => {
+function transformToPermissionRoutes(menus: MenuEntity[], level: number = 0) {
+  return menus.map((menu) => {
     const {
       id,
       label,
@@ -29,7 +26,7 @@ function transformToPermissionRoutes(
       componentName,
       component,
       children = [],
-    } = permission;
+    } = menu;
     // const importComponent =
     //   componentName && component
     //     ? ((await pages[`${ENTRY_PATH}${component}`]()) as {
@@ -87,8 +84,8 @@ function transformToPermissionRoutes(
 }
 
 export function usePermissionRoutes() {
-  const { permissions = [] } = useUserInfo();
+  const { menus = [] } = useUserInfo();
   return useCreation(() => {
-    return transformToPermissionRoutes(permissions);
-  }, [permissions]);
+    return transformToPermissionRoutes(menus);
+  }, [menus]);
 }

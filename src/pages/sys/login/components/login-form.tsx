@@ -2,7 +2,7 @@ import { Button, Checkbox, Flex, Form, Input } from "antd";
 import { t } from "i18next";
 import { useDispatch } from "react-redux";
 
-import { useLogin } from "@/api/userService";
+import { useLogin } from "@/api";
 import { Iconify } from "@/components";
 import { useRouter } from "@/hooks";
 import { setUserInfo } from "@/store";
@@ -30,10 +30,10 @@ export const LoginForm = () => {
     // });
     // console.log(user);
     const userInfo = await login(values);
-    const { permissions } = userInfo;
+    const { menus } = userInfo;
     dispatch(
       setUserInfo({
-        permissions,
+        menus,
       }),
     );
     replace(HOMEPAGE);

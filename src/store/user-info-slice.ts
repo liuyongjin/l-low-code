@@ -1,26 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 
-import { UserInfo } from "@/types/entity";
+import { MenuEntity } from "@/types/entity";
 import { StorageEnum } from "@/types/enum";
 import { getItem, removeItem, setItem } from "@/utils";
 
 import { RootState } from "./store";
-
-interface Permission {
-  label?: string;
-  icon?: string;
-  path?: string;
-  id: string;
-  children?: Array<{
-    parentId: string;
-    label?: string;
-    path?: string;
-    id: string;
-    componentName?: string;
-    component?: string;
-  }>;
-}
 
 export type UserInfoState = {
   id?: string;
@@ -29,7 +14,7 @@ export type UserInfoState = {
     id: string;
     name?: string;
   };
-  permissions?: Permission[];
+  menus?: MenuEntity[];
   token?: string;
 };
 
@@ -40,26 +25,24 @@ const initialState: UserInfoState = {
     id: "id",
     name: "name",
   },
-  permissions: [],
+  menus: [],
   token: "token",
 };
 
 export const userInfoSlice = createSlice({
   name: "userInfo",
-  initialState: getItem<UserInfo>(StorageEnum.User) || initialState,
+  initialState: getItem<UserInfoState>(StorageEnum.UserInfo) || initialState,
   reducers: {
     setUserInfo: (state, action: PayloadAction<UserInfoState>) => {
       const userInfo = {
         ...state,
         ...action.payload,
       };
-      // console.log(userInfo);
-      setItem(StorageEnum.User, userInfo);
-      // state.permissions = action.payload.permissions;
+      setItem(StorageEnum.UserInfo, userInfo);
       return userInfo;
     },
     clearUserInfo: () => {
-      removeItem(StorageEnum.User);
+      removeItem(StorageEnum.UserInfo);
       // removeItem(StorageEnum.Token);
       return {};
     },

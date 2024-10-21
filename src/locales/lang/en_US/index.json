@@ -1,10 +1,12 @@
 {
   "layout": {
     "menu": {
+      "list": "List",
+      "table-list": "Table-List",
       "dashboard": "Dashboard",
       "workbench": "Workbench",
       "management": "Management",
-      "permission": "Permission"
+      "permissions": "Permissions"
     },
     "tab": {
       "fullscreen": "FullScreen",

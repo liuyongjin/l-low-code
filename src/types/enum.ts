@@ -10,10 +10,10 @@ export enum ResultEnum {
 }
 
 export enum StorageEnum {
-  User = "user",
-  Token = "token",
-  Settings = "settings",
-  I18N = "i18nextLng",
+  UserInfo = "__user__info__",
+  // Token = "token",
+  Settings = "__settings__",
+  // I18N = "i18nextLng",
 }
 
 export enum ThemeMode {
