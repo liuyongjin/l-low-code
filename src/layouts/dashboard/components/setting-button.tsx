@@ -10,7 +10,7 @@ import { IconButton, Iconify, SvgIcon } from "@/components";
 // import RedBlur from "@/assets/images/background/red-blur.png";
 // import { varHover } from "@/components/animate/variants/action";
 import { useThemeToken } from "@/hooks";
-import { setSettings, settingType, useSettings } from "@/store";
+import { setSettings, SettingsState, useSettings } from "@/store";
 import { colorPrimarys } from "@/theme/antd/theme";
 import { ThemeColorPresets, ThemeMode } from "@/types/enum";
 
@@ -26,7 +26,7 @@ export function SettingButton() {
   const { themeMode, fixHeader, themeColorPresets, multiTab } = useSettings();
   const dispatch = useDispatch();
 
-  const handleSetSetting = (newSetSetting: settingType) => {
+  const handleSetSetting = (newSetSetting: Partial<SettingsState>) => {
     dispatch(setSettings(newSetSetting));
   };
 

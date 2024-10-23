@@ -1,13 +1,11 @@
 import { useMount } from "ahooks";
-import { Button, Popconfirm, Table, Tag } from "antd";
+import { Button, Popconfirm, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
-import { t } from "i18next";
 import { useState } from "react";
 
 import { useTableList } from "@/api";
 import { IconButton, Iconify } from "@/components";
 import { MenuEntity } from "@/types/entity";
-import { BasicStatus } from "@/types/enum";
 
 export const TableList = () => {
   const [dataSource, setDataSource] = useState([]);

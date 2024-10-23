@@ -30,7 +30,7 @@ export function AntdConfigProvider({ children }: PropsWithChildren) {
     <ConfigProvider
       locale={language.antdLocal}
       theme={{
-        // cssVar: true,
+        cssVar: true,
         token: {
           colorPrimary,
           ...customThemeToken,

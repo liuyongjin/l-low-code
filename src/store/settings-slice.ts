@@ -7,7 +7,7 @@ import { getItem, removeItem, setItem } from "@/utils";
 
 import { RootState } from "./store";
 
-type SettingsState = {
+export type SettingsState = {
   themeMode: ThemeMode;
   fixHeader: boolean;
   themeColorPresets: ThemeColorPresets;
@@ -25,7 +25,7 @@ export const settingsSlice = createSlice({
   name: "settings",
   initialState: getItem<SettingsState>(StorageEnum.Settings) || initialState,
   reducers: {
-    setSettings: (state, action: PayloadAction<SettingsState>) => {
+    setSettings: (state, action: PayloadAction<Partial<SettingsState>>) => {
       const newState = Object.assign(state, action.payload);
       // console.log(JSON.stringify(newState));
       setItem(StorageEnum.Settings, newState);
