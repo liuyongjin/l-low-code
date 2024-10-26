@@ -19,16 +19,9 @@ export const LoginForm = () => {
   const { replace } = useRouter();
   const dispatch = useDispatch();
   const login = useLogin();
-  // console.log(data);
 
-  // const [loading, setLoading] = useState(false);
   const handleFinish = async (values: typeof initialValues) => {
     console.log("Received values of form: ", values);
-    // const user = await login({
-    //   username: "admin",
-    //   password: "123456789",
-    // });
-    // console.log(user);
     const userInfo = await login(values);
     const { menus } = userInfo;
     dispatch(

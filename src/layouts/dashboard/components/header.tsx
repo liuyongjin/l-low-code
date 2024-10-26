@@ -6,10 +6,9 @@
 import { Button, Layout } from "antd";
 import { Dispatch, SetStateAction } from "react";
 
-import { IconButton, Iconify } from "@/components";
+import { IconButton, Iconify, LocalePicker } from "@/components";
 
 import { AccountDropdown } from "./account-dropdown";
-import { LocalePicker } from "./locale-picker";
 import { SettingButton } from "./setting-button";
 // import { useSettingss } from "@/store/settingStore";
 // import { useResponsive, useThemeToken } from "@/theme/hooks";
