@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import { usePermissionRoutes } from "@/hooks";
-import { Main } from "@/layouts";
+import { MainLayout, SimpleLayout } from "@/layouts";
 import { Login } from "@/pages/sys/login";
 import { Page403 } from "@/pages/sys/page-403";
 import { Page404 } from "@/pages/sys/page-404";
@@ -18,9 +18,9 @@ const loginRoutes = {
 };
 
 const errorRoutes = {
-  element: <Main />,
+  element: <SimpleLayout />,
   loader: () => {
-    return { label: "Page Error" };
+    return { label: "Error" };
   },
   children: [
     { path: "403", element: <Page403 /> },
@@ -39,7 +39,7 @@ export const Router = () => {
   const asyncRoutes: RouteObject = {
     path: "/",
     id: "/",
-    element: <Main />,
+    element: <MainLayout />,
     loader: () => {
       return { label: "Dashboard" };
     },

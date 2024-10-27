@@ -23,12 +23,8 @@ export const LoginForm = () => {
   const handleFinish = async (values: typeof initialValues) => {
     console.log("Received values of form: ", values);
     const userInfo = await login(values);
-    const { menus } = userInfo;
-    dispatch(
-      setUserInfo({
-        menus,
-      }),
-    );
+    console.log("userInfo: ", userInfo);
+    dispatch(setUserInfo(userInfo));
     replace(HOMEPAGE);
   };
 

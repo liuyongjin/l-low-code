@@ -14,16 +14,9 @@ export type UserInfoState = {
   token?: string;
 };
 
-const initialState: UserInfoState = {
-  id: "1",
-  username: "admin",
-  menus: [],
-  token: "token",
-};
-
 export const userInfoSlice = createSlice({
   name: "userInfo",
-  initialState: getItem<UserInfoState>(StorageEnum.UserInfo) || initialState,
+  initialState: getItem<UserInfoState>(StorageEnum.UserInfo) || {},
   reducers: {
     setUserInfo: (state, action: PayloadAction<UserInfoState>) => {
       const userInfo = {

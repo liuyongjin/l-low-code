@@ -1,10 +1,9 @@
 import { Button, Layout } from "antd";
 import { Dispatch, SetStateAction } from "react";
 
-import { IconButton, Iconify, LocalePicker } from "@/components";
+import { IconButton, Iconify, LocalePicker, SettingButton } from "@/components";
 
 import { AccountDropdown } from "./account-dropdown";
-import { SettingButton } from "./setting-button";
 
 const { Header: AntdHeader } = Layout;
 

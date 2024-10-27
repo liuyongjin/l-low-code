@@ -4,11 +4,7 @@ import { mockMenuData } from "./permissions";
 
 const mockUserInfo = {
   id: "000001",
-  username: "l-admin",
-  role: {
-    id: "id",
-    name: "name",
-  },
+  username: "admin",
   menus: mockMenuData,
   token: "token",
 };
