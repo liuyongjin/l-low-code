@@ -10,21 +10,13 @@ import { RootState } from "./store";
 export type UserInfoState = {
   id?: string;
   username?: string;
-  role?: {
-    id: string;
-    name?: string;
-  };
   menus?: MenuEntity[];
   token?: string;
 };
 
 const initialState: UserInfoState = {
-  id: "xxxxqe",
-  username: "xxxxqe",
-  role: {
-    id: "id",
-    name: "name",
-  },
+  id: "1",
+  username: "admin",
   menus: [],
   token: "token",
 };
@@ -43,7 +35,6 @@ export const userInfoSlice = createSlice({
     },
     clearUserInfo: () => {
       removeItem(StorageEnum.UserInfo);
-      // removeItem(StorageEnum.Token);
       return {};
     },
   },

@@ -10,21 +10,14 @@ export enum ResultEnum {
 }
 
 export enum StorageEnum {
-  UserInfo = "__user__info__",
-  // Token = "token",
-  Settings = "__settings__",
-  // I18N = "i18nextLng",
+  UserInfo = "userinfo",
+  Settings = "settings",
+  I18N = "i18nextLng",
 }
 
 export enum ThemeMode {
   Light = "light",
   Dark = "dark",
-}
-
-export enum ThemeLayout {
-  Vertical = "vertical",
-  Horizontal = "horizontal",
-  Mini = "mini",
 }
 
 export enum ThemeColorPresets {
@@ -49,10 +42,4 @@ export enum MultiTabOperation {
   CLOSEALL = "closeAll",
   CLOSELEFT = "closeLeft",
   CLOSERIGHT = "closeRight",
-}
-
-export enum PermissionType {
-  CATALOGUE,
-  MENU,
-  BUTTON,
 }

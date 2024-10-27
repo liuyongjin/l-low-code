@@ -1,7 +1,6 @@
 import "antd/dist/reset.css";
 
 import { ConfigProvider, theme } from "antd";
-// import { StyleProvider } from "antd-style";
 import { PropsWithChildren } from "react";
 
 import { useLocale } from "@/hooks";
@@ -43,10 +42,7 @@ export function AntdConfigProvider({ children }: PropsWithChildren) {
         algorithm,
       }}
     >
-      {/* https://ant.design/docs/react/compatible-style-cn#styleprovider */}
-      {/* <StyleProvider hashPriority="high"> */}
       {children}
-      {/* </StyleProvider> */}
     </ConfigProvider>
   );
 }

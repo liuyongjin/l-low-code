@@ -1,28 +1,21 @@
 import { useFullscreen } from "ahooks";
 import { Button, Card, Drawer, Switch } from "antd";
+import { createStyles } from "antd-style";
 import { m } from "framer-motion";
 import { t } from "i18next";
-import { CSSProperties, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { IconButton, Iconify, SvgIcon } from "@/components";
-// import CyanBlur from "@/assets/images/background/cyan-blur.png";
-// import RedBlur from "@/assets/images/background/red-blur.png";
-// import { varHover } from "@/components/animate/variants/action";
 import { useThemeToken } from "@/hooks";
 import { setSettings, SettingsState, useSettings } from "@/store";
 import { colorPrimarys } from "@/theme/antd/theme";
 import { ThemeColorPresets, ThemeMode } from "@/types/enum";
 
 export function SettingButton() {
+  const { styles } = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const {
-    colorPrimary,
-    // colorBgBase,
-    colorTextSecondary,
-    colorTextTertiary,
-    // colorBgContainer,
-  } = useThemeToken();
+  const { colorPrimary } = useThemeToken();
   const { themeMode, fixHeader, themeColorPresets, multiTab } = useSettings();
   const dispatch = useDispatch();
 
@@ -30,43 +23,13 @@ export function SettingButton() {
     dispatch(setSettings(newSetSetting));
   };
 
-  const style: CSSProperties = {
-    backdropFilter: "blur(20px)",
-    // backgroundImage: `url("${CyanBlur}"), url("${RedBlur}")`,
-    backgroundRepeat: "no-repeat, no-repeat",
-    // backgroundColor: Color(colorBgContainer).alpha(0.9).toString(),
-    backgroundPosition: "right top, left bottom",
-    backgroundSize: "50, 50%",
-  };
-
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body);
-
-  // console.log(fixHeader);
-
-  // const layoutBackground = (layout: ThemeLayout) =>
-  //   themeLayout === layout
-  //     ? `linear-gradient(135deg, ${colorBgBase} 0%, ${colorPrimary} 100%)`
-  //     : "#919eab";
-  // useWhyDidYouUpdate("useWhyDidYouUpdateComponent", {
-  //   ...props,
-  //   dispatch,
-  //   drawerOpen,
-  //   colorPrimary,
-  //   colorTextSecondary,
-  //   colorTextTertiary,
-  //   themeMode,
-  //   fixHeader,
-  //   themeColorPresets,
-  //   multiTab,
-  //   isFullscreen,
-  // });
 
   return (
     <>
       <div className="flex items-center justify-center">
         <m.div
           animate={{
-            // rotate: [0, drawerOpen ? 0 : 360],
             rotate: [0, 360],
           }}
           transition={{
@@ -74,9 +37,6 @@ export function SettingButton() {
             ease: "linear",
             repeat: Infinity,
           }}
-          // whileTap="tap"
-          // whileHover="hover"
-          // variants={varHover(1.05)}
           onClick={() => setDrawerOpen(true)}
         >
           <IconButton className="h-10 w-10">
@@ -95,7 +55,6 @@ export function SettingButton() {
           body: { padding: 0 },
           mask: { backgroundColor: "transparent" },
         }}
-        style={style}
         extra={
           <IconButton
             onClick={() => setDrawerOpen(false)}
@@ -137,12 +96,7 @@ export function SettingButton() {
         <div className="flex flex-col gap-6 p-6">
           {/* theme mode start */}
           <div>
-            <div
-              className="mb-3 text-base font-semibold"
-              style={{ color: colorTextSecondary }}
-            >
-              {t("layout.settings.mode")}
-            </div>
+            <div className={styles.modeTitle}>{t("layout.settings.mode")}</div>
             <div className="flex flex-row gap-4">
               <Card
                 onClick={() => handleSetSetting({ themeMode: ThemeMode.Light })}
@@ -170,10 +124,7 @@ export function SettingButton() {
 
           {/* theme presets start */}
           <div>
-            <div
-              className="mb-3 text-base font-semibold"
-              style={{ color: colorTextSecondary }}
-            >
+            <div className={styles.presetsTitle}>
               {t("layout.settings.presets")}
             </div>
             <div className="grid grid-cols-3 gap-x-4 gap-y-3">
@@ -186,18 +137,12 @@ export function SettingButton() {
                       themeColorPresets === preset ? `${color}14` : "",
                   }}
                   onClick={() =>
-                    // setThemeColorPresets(preset as ThemeColorPresets)
                     handleSetSetting({
                       themeColorPresets: preset as ThemeColorPresets,
                     })
                   }
                 >
                   <div style={{ color }}>
-                    {/* <MdCircle
-                      style={{
-                        fontSize: themeColorPresets === preset ? 24 : 12,
-                      }}
-                    /> */}
                     <Iconify
                       icon="material-symbols:circle"
                       size={themeColorPresets === preset ? 24 : 12}
@@ -211,37 +156,24 @@ export function SettingButton() {
 
           {/* Page config start */}
           <div>
-            <div
-              className="mb-3 text-base font-semibold"
-              style={{ color: colorTextSecondary }}
-            >
-              {t("layout.settings.page")}
-            </div>
+            <div className={styles.pageTitle}>{t("layout.settings.page")}</div>
             <div className="flex flex-col gap-2">
-              <div
-                className="flex items-center justify-between"
-                style={{ color: colorTextTertiary }}
-              >
+              <div className={styles.fixHeader}>
                 <div>{t("layout.settings.fixHeader")}</div>
                 <Switch
                   size="small"
                   checked={fixHeader}
                   onChange={(checked) =>
-                    //  setBreadCrumn(checked)
                     handleSetSetting({ fixHeader: checked })
                   }
                 />
               </div>
-              <div
-                className="flex items-center justify-between"
-                style={{ color: colorTextTertiary }}
-              >
+              <div className={styles.multiTab}>
                 <div>{t("layout.settings.multiTab")}</div>
                 <Switch
                   size="small"
                   checked={multiTab}
                   onChange={(checked) =>
-                    // setMultiTab(checked)
                     handleSetSetting({ multiTab: checked })
                   }
                 />
@@ -254,3 +186,44 @@ export function SettingButton() {
     </>
   );
 }
+
+const useStyles = createStyles(({ token }) => {
+  const { colorTextSecondary, colorTextTertiary } = token;
+
+  return {
+    modeTitle: {
+      marginBottom: "0.4rem",
+      fontWeight: 600,
+      fontSize: "1rem",
+      lineHeight: "1.5rem",
+      color: colorTextSecondary,
+    },
+    presetsTitle: {
+      marginBottom: "0.4rem",
+      fontWeight: 600,
+      fontSize: "1rem",
+      lineHeight: "1.5rem",
+      color: colorTextSecondary,
+    },
+    pageTitle: {
+      marginBottom: "0.4rem",
+      fontWeight: 600,
+      fontSize: "1rem",
+      lineHeight: "1.5rem",
+      color: colorTextSecondary,
+    },
+    fixHeader: {
+      marginBottom: "0.2rem",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      color: colorTextTertiary,
+    },
+    multiTab: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      color: colorTextTertiary,
+    },
+  };
+});

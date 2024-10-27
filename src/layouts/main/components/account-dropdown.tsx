@@ -9,29 +9,24 @@ import { IconButton, Iconify } from "@/components";
 import { useRouter, useThemeToken } from "@/hooks";
 import { clearSettings, clearUserInfo, useUserInfo } from "@/store";
 
-const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
-
 export function AccountDropdown() {
   const { replace } = useRouter();
-  const { username, email } = useUserInfo();
+  const { username } = useUserInfo();
   const dispatch = useDispatch();
 
-  //   const { clearUserInfoAndToken } = useUserActions();
-  //   const { backToLogin } = useLoginStateContext();
   const { t } = useTranslation();
+
   const logout = () => {
     try {
-      // todo const logoutMutation = useMutation(userService.logout);
-      // todo logoutMutation.mutateAsync();
       dispatch(clearUserInfo());
       dispatch(clearSettings());
-      //   backToLogin();
     } catch (error) {
       console.log(error);
     } finally {
       replace("/login");
     }
   };
+
   const { colorBgElevated, borderRadiusLG, boxShadowSecondary } =
     useThemeToken();
 
@@ -49,8 +44,7 @@ export function AccountDropdown() {
   const dropdownRender: DropdownProps["dropdownRender"] = (menu) => (
     <div style={contentStyle}>
       <div className="flex flex-col items-start p-4">
-        <div>{username}</div>
-        <div className="text-gray">{email}</div>
+        <div className="text-gray">{username}</div>
       </div>
       <Divider style={{ margin: 0 }} />
       {React.cloneElement(menu as React.ReactElement, { style: menuStyle })}
@@ -60,31 +54,11 @@ export function AccountDropdown() {
   const items: MenuProps["items"] = [
     {
       label: (
-        <NavLink to="" target="_blank">
-          {t("layout.account.docs")}
+        <NavLink to="/management/permissions">
+          {t("layout.account.permissions")}
         </NavLink>
       ),
-      key: "0",
-    },
-    {
-      label: <NavLink to={HOMEPAGE}>{t("layout.account.dashboard")}</NavLink>,
       key: "1",
-    },
-    {
-      label: (
-        <NavLink to="/management/user/profile">
-          {t("layout.account.profile")}
-        </NavLink>
-      ),
-      key: "2",
-    },
-    {
-      label: (
-        <NavLink to="/management/user/account">
-          {t("layout.account.account")}
-        </NavLink>
-      ),
-      key: "3",
     },
     { type: "divider" },
     {
@@ -93,7 +67,7 @@ export function AccountDropdown() {
           {t("sys.login.logout")}
         </button>
       ),
-      key: "4",
+      key: "2",
       onClick: logout,
     },
   ];

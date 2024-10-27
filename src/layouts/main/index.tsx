@@ -14,7 +14,7 @@ import { Nav } from "./components/nav";
 
 const { Sider, Content } = Layout;
 
-export const Dashboard = () => {
+export const Main = () => {
   const { styles } = useStyles();
   const { fixHeader, multiTab } = useSettings();
   const [collapsed, setCollapsed] = useState(false);
@@ -23,7 +23,6 @@ export const Dashboard = () => {
   return (
     <Layout className="h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="pt-12" />
         <Nav />
       </Sider>
       <Layout className="overflow-auto" ref={container}>

@@ -11,7 +11,7 @@ const { VITE_APP_HOMEPAGE: HOMEPAGE } = import.meta.env;
 
 const initialValues = {
   username: "admin",
-  password: "456456465",
+  password: "123456",
   remember: true,
 };
 
@@ -33,7 +33,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <Form name="login" initialValues={initialValues} onFinish={handleFinish}>
+    <Form initialValues={initialValues} onFinish={handleFinish}>
       <Form.Item
         name="username"
         rules={[{ required: true, message: "Please input your Username!" }]}

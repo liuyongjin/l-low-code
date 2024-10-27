@@ -18,10 +18,7 @@
       "closeRight": "关闭右侧标签页"
     },
     "account": {
-      "docs": "文档",
-      "dashboard": "仪表",
-      "profile": "个人资料",
-      "account": "账户"
+      "permissions": "权限"
     },
     "settings": {
       "settings": "设置",

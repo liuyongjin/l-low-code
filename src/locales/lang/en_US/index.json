@@ -18,10 +18,7 @@
       "closeRight": "Close Right"
     },
     "account": {
-      "docs": "Document",
-      "dashboard": "Dashboard",
-      "profile": "Profile",
-      "account": "Account"
+      "permissions": "Permissions"
     },
     "settings": {
       "settings": "Settings",

@@ -163,6 +163,7 @@ export const Workbench = () => {
         items={items}
       />
       <Line className={styles.multLine} {...multLineConfig} />
+      <Line className={styles.multLine} {...multLineConfig} />
     </div>
   );
 };

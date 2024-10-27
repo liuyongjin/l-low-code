@@ -3,9 +3,8 @@ import en_US from "antd/locale/en_US";
 import zh_CN from "antd/locale/zh_CN";
 import { useTranslation } from "react-i18next";
 
-import { LocalEnum } from "@/types/enum";
+import { Locale, LocalEnum } from "@/types";
 
-type Locale = keyof typeof LocalEnum;
 type Language = {
   locale: keyof typeof LocalEnum;
   icon: string;
@@ -31,16 +30,11 @@ export const LANGUAGE_MAP: Record<Locale, Language> = {
 export function useLocale() {
   const { i18n } = useTranslation();
 
-  /**
-   * localstorage -> i18nextLng change
-   */
+  const locale = (i18n.resolvedLanguage || LocalEnum.en_US) as Locale;
+  const language = LANGUAGE_MAP[locale];
   const setLocale = (locale: Locale) => {
     i18n.changeLanguage(locale);
   };
-
-  const locale = (i18n.resolvedLanguage || LocalEnum.en_US) as Locale;
-
-  const language = LANGUAGE_MAP[locale];
 
   return {
     locale,

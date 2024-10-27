@@ -3,9 +3,7 @@ import { Dropdown } from "antd";
 
 import { IconButton, Iconify } from "@/components";
 import { LANGUAGE_MAP, useLocale } from "@/hooks";
-import { LocalEnum } from "@/types/enum";
-
-type Locale = keyof typeof LocalEnum;
+import { Locale } from "@/types";
 
 export function LocalePicker() {
   const { setLocale } = useLocale();

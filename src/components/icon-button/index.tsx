@@ -1,12 +1,18 @@
 import { ButtonProps } from "antd";
 import { CSSProperties, ReactNode } from "react";
 
-type Props = {
+type IconButtonProps = {
   children: ReactNode;
   className?: string;
   style?: CSSProperties;
 } & ButtonProps;
-export function IconButton({ children, className, style, onClick }: Props) {
+
+export function IconButton({
+  children,
+  className,
+  style,
+  onClick,
+}: IconButtonProps) {
   return (
     <button
       style={style}
