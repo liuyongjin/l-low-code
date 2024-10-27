@@ -1,8 +1,6 @@
 import {
   createContext,
   PropsWithChildren,
-  ReactElement,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -10,18 +8,13 @@ import {
 } from "react";
 
 import { useCurrentRouteMeta, useRouter } from "@/hooks";
+import { RouteMeta } from "@/types";
 import { getTimeStamp } from "@/utils";
 
-export type KeepAliveTab = {
-  children?: any;
-  outlet?: ReactElement;
-  [key: string]: any;
-};
-
 interface MultiTabsContextType {
-  tabs: any[];
+  tabs: RouteMeta[];
   activeTabRoutePath?: string;
-  setTabs: (tabs: any[]) => void;
+  setTabs: (tabs: RouteMeta[]) => void;
   closeTab: (path?: string) => void;
   closeOthersTab: (path?: string) => void;
   closeAll: () => void;
@@ -46,22 +39,13 @@ export const MultiTabsContext = createContext<MultiTabsContextType>({
 
 export function MultiTabsProvider({ children }: PropsWithChildren) {
   const { push } = useRouter();
-  // tabs
-  const [tabs, setTabs] = useState<KeepAliveTab[]>([]);
+  const [tabs, setTabs] = useState<RouteMeta[]>([]);
 
-  // current route meta
   const currentRouteMeta = useCurrentRouteMeta();
-  // useCurrentRouteMeta();
-  // const currentRouteMeta = {};
-  // active tab
-  // active tab
   const activeTabRoutePath = useMemo(() => {
     if (!currentRouteMeta) return "";
 
-    const { key, params = {} } = currentRouteMeta;
-    // if (!isEmpty(params)) {
-    //   return replaceDynamicParams(key, params);
-    // }
+    const { key } = currentRouteMeta;
     return key;
   }, [currentRouteMeta]);
 
@@ -155,27 +139,15 @@ export function MultiTabsProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     setTabs((prev) => prev.filter((item) => !item.hideTab));
-
     if (!currentRouteMeta) return;
-    const {
-      key,
-      // outlet: children, params = {}
-    } = currentRouteMeta;
-
-    // if (!isEmpty(params)) {
-    //   key = replaceDynamicParams(key, params);
-    // }
+    const { key } = currentRouteMeta;
     const isExisted = tabs.find((item) => item.key === key);
-
     if (!isExisted) {
       setTabs((prev) => [
         ...prev,
         {
           ...currentRouteMeta,
           key,
-          // children,
-          // children: null,
-          // outlet: null,
           timeStamp: getTimeStamp(),
         },
       ]);

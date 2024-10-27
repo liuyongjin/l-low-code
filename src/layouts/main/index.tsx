@@ -25,32 +25,32 @@ export const Main = () => {
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <Nav />
       </Sider>
-      <Layout className="overflow-auto" ref={container}>
-        <Affix
-          offsetTop={0}
-          // todo: fix warning for 'Added non-passive event listener'
-          target={() => (fixHeader ? container.current : window)}
-        >
-          <div>
-            <Header collapsed={collapsed} onCollapsed={setCollapsed} />
-          </div>
-        </Affix>
-        <Content className="z-1">
-          {multiTab ? (
-            <div className="p-4 rounded-lg min-h-80">
-              <MultiTabsProvider>
-                <MultiTabs />
-              </MultiTabsProvider>
+      <Suspense fallback={<CircleLoading />}>
+        <Layout className="overflow-auto" ref={container}>
+          <Affix
+            offsetTop={0}
+            // todo: fix warning for 'Added non-passive event listener'
+            target={() => (fixHeader ? container.current : window)}
+          >
+            <div>
+              <Header collapsed={collapsed} onCollapsed={setCollapsed} />
             </div>
-          ) : (
-            <div className={styles.outletWrapper}>
-              <Suspense fallback={<CircleLoading />}>
+          </Affix>
+          <Content className="z-1">
+            {multiTab ? (
+              <div className="p-4 rounded-lg min-h-80">
+                <MultiTabsProvider>
+                  <MultiTabs />
+                </MultiTabsProvider>
+              </div>
+            ) : (
+              <div className={styles.outletWrapper}>
                 <Outlet />
-              </Suspense>
-            </div>
-          )}
-        </Content>
-      </Layout>
+              </div>
+            )}
+          </Content>
+        </Layout>
+      </Suspense>
     </Layout>
   );
 };

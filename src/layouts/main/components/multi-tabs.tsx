@@ -1,13 +1,11 @@
-import { useFullscreen } from "ahooks";
+import { useCreation, useFullscreen } from "ahooks";
 import { Card, Dropdown, MenuProps, Tabs, TabsProps } from "antd";
-import { body } from "framer-motion/client";
 import {
   CSSProperties,
   KeyboardEvent,
   MouseEvent,
   ReactInstance,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -16,11 +14,9 @@ import { useTranslation } from "react-i18next";
 
 import { Iconify } from "@/components";
 import { useMultiTabsContext, useRouter, useThemeToken } from "@/hooks";
-import { KeepAliveTab } from "@/provider";
+import { RouteMeta } from "@/types";
 import { MultiTabOperation } from "@/types/enum";
 
-// type MultiTabsProps = {
-// };
 export const MultiTabs = () => {
   const { t } = useTranslation();
   const { push } = useRouter();
@@ -28,14 +24,12 @@ export const MultiTabs = () => {
   const [hoveringTabKey, setHoveringTabKey] = useState("");
   const [openDropdownTabKey, setopenDropdownTabKey] = useState("");
   const themeToken = useThemeToken();
-
   const tabContentRef = useRef(null);
   const [, { toggleFullscreen }] = useFullscreen(tabContentRef.current);
 
   const {
     tabs,
     activeTabRoutePath,
-    // setTabs,
     closeTab,
     refreshTab,
     closeOthersTab,
@@ -105,23 +99,7 @@ export const MultiTabs = () => {
     [openDropdownTabKey, t, tabs],
   );
 
-  useEffect(() => {
-    if (!scrollContainer || !scrollContainer.current) {
-      return;
-    }
-    const index = tabs.findIndex((tab) => tab.key === activeTabRoutePath);
-    const currentTabElement = scrollContainer.current.querySelector(
-      `#tab-${index}`,
-    );
-    if (currentTabElement) {
-      currentTabElement.scrollIntoView({
-        block: "nearest",
-        behavior: "smooth",
-      });
-    }
-  }, [activeTabRoutePath, tabs]);
-
-  const calcTabStyle: (tab: KeepAliveTab) => CSSProperties = useCallback(
+  const calcTabStyle: (tab: RouteMeta) => CSSProperties = useCallback(
     (tab) => {
       const isActive =
         tab.key === activeTabRoutePath || tab.key === hoveringTabKey;
@@ -152,7 +130,7 @@ export const MultiTabs = () => {
         item: ReactInstance;
         domEvent: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>;
       },
-      tab: KeepAliveTab,
+      tab: RouteMeta,
     ) => {
       const { key, domEvent } = menuInfo;
       domEvent.stopPropagation();
@@ -193,7 +171,7 @@ export const MultiTabs = () => {
     ],
   );
 
-  const onOpenChange = (open: boolean, tab: KeepAliveTab) => {
+  const onOpenChange = (open: boolean, tab: RouteMeta) => {
     if (open) {
       setopenDropdownTabKey(tab.key);
     } else {
@@ -201,12 +179,8 @@ export const MultiTabs = () => {
     }
   };
 
-  const handleTabClick = ({ key }: KeepAliveTab) => {
-    push(key);
-  };
-
   const renderTabLabel = useCallback(
-    (tab: KeepAliveTab) => {
+    (tab: RouteMeta) => {
       if (tab.hideTab) return null;
       return (
         <Dropdown
@@ -260,7 +234,30 @@ export const MultiTabs = () => {
     ],
   );
 
-  const tabItems = useMemo(() => {
+  const renderTabBar: TabsProps["renderTabBar"] = useCallback(() => {
+    return (
+      <div className="z-2 w-full">
+        <div className="flex w-full">
+          <div ref={scrollContainer} className="hide-scrollbar flex w-full">
+            {tabs.map((tab, index) => (
+              <div
+                id={`tab-${index}`}
+                className="flex-shrink-0"
+                key={tab.key}
+                onClick={() => push(tab.key)}
+              >
+                <div key={tab.key} className="w-auto">
+                  {renderTabLabel(tab)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }, [push, renderTabLabel, tabs]);
+
+  const tabItems = useCreation(() => {
     return tabs?.map((tab) => ({
       label: tab.label,
       key: tab.key,
@@ -277,34 +274,11 @@ export const MultiTabs = () => {
     }));
   }, [tabs]);
 
-  const renderTabBar: TabsProps["renderTabBar"] = () => {
-    return (
-      <div className="z-2 w-full">
-        <div className="flex w-full">
-          <div ref={scrollContainer} className="hide-scrollbar flex w-full">
-            {tabs.map((tab, index) => (
-              <div
-                id={`tab-${index}`}
-                className="flex-shrink-0"
-                key={tab.key}
-                onClick={() => handleTabClick(tab)}
-              >
-                <div key={tab.key} className="w-auto">
-                  {renderTabLabel(tab)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <Tabs
       activeKey={activeTabRoutePath}
-      items={tabItems}
       renderTabBar={renderTabBar}
+      items={tabItems}
     />
   );
 };

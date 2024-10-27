@@ -60,7 +60,6 @@ export const Nav = () => {
 
   return (
     <Menu
-      // theme="dark"
       mode="inline"
       items={menuList}
       openKeys={openKeys}
