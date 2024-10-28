@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 import { UserInfoState } from "@/store";
 
@@ -19,7 +19,6 @@ export enum UserApi {
   Login = "/user/login",
 }
 
-// baseService.post<SignInRes>({ url: UserApi.Login, data });
 export const login = (data: SignInReq) =>
   baseService.post({ url: UserApi.Login, data });
 
@@ -29,15 +28,6 @@ export const useLogin = () => {
       return login(data);
     },
   });
-  // return useQuery({
-  //   enabled: false,
-  //   queryKey: [UserApi.Login],
-  //   queryFn: () => {
-  //     return login({
-  //       // username: "",
-  //       // password: "",
-  //     });
-  //   },
-  // });
+
   return loginMutation.mutateAsync;
 };

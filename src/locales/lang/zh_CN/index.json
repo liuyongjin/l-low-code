@@ -32,6 +32,12 @@
     }
   },
   "sys": {
+    "page": {
+      "goToHome": "回到主页",
+      "pageNotFound": "抱歉, 页面未找到!",
+      "noPermission":"没有权限!",
+      "internalServer": "500 服务器错误!"
+    },
     "login": {
       "loginButton": "登录",
       "registerButton": "注册",

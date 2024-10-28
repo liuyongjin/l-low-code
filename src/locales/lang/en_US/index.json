@@ -27,11 +27,17 @@
       "mode": "Mode",
       "presets": "Presets",
       "page": "Page",
-      "fixHeader": "Fix header",
+      "fixHeader": "Fix Header",
       "multiTab": "Multi Tab"
     }
   },
   "sys": {
+    "page": {
+      "goToHome": "Go To Home",
+      "pageNotFound": "Sorry, Page Not Found!",
+      "noPermission": "No permission!",
+      "internalServer": "500 Internal Server Error!"
+    },
     "login": {
       "loginButton": "Sign in",
       "registerButton": "Sign up",
