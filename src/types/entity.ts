@@ -1,4 +1,5 @@
 import { BasicStatus } from "./enum";
+
 export interface MenuEntity {
   icon?: string;
   parentId: string;

@@ -1,24 +1,18 @@
+import { createStyles } from "antd-style";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import { AuthGuard, CircleLoading } from "@/components";
-import { useThemeToken } from "@/hooks";
 
 import { HeaderSimple } from "./components/header-simple";
 
 export const SimpleLayout = () => {
-  const { colorBgElevated, colorTextBase } = useThemeToken();
+  const { styles } = useStyles();
 
   return (
     <AuthGuard>
       <Suspense fallback={<CircleLoading />}>
-        <div
-          className="flex h-screen w-full flex-col"
-          style={{
-            color: colorTextBase,
-            background: colorBgElevated,
-          }}
-        >
+        <div className={styles.simpleLayout}>
           <HeaderSimple />
           <Outlet />
         </div>
@@ -26,3 +20,18 @@ export const SimpleLayout = () => {
     </AuthGuard>
   );
 };
+
+const useStyles = createStyles(({ token }) => {
+  const { colorBgElevated, colorTextBase } = token;
+
+  return {
+    simpleLayout: {
+      display: "flex",
+      width: "100%",
+      flexDirection: "column",
+      height: "100vh",
+      color: colorTextBase,
+      background: colorBgElevated,
+    },
+  };
+});

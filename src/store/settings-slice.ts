@@ -27,15 +27,11 @@ export const settingsSlice = createSlice({
   reducers: {
     setSettings: (state, action: PayloadAction<Partial<SettingsState>>) => {
       const newState = Object.assign(state, action.payload);
-      // console.log(JSON.stringify(newState));
       setItem(StorageEnum.Settings, newState);
-      // return {
-      //   ...state,
-      //   ...action.payload,
-      // };
     },
     clearSettings() {
       removeItem(StorageEnum.Settings);
+      return initialState;
     },
   },
 });

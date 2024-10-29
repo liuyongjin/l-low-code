@@ -22,8 +22,6 @@ export enum ThemeMode {
 
 export enum ThemeColorPresets {
   Default = "default",
-  Cyan = "cyan",
-  Purple = "purple",
   Blue = "blue",
   Orange = "orange",
   Red = "red",

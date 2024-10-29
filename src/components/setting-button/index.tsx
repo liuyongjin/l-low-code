@@ -127,11 +127,11 @@ export function SettingButton() {
             <div className={styles.presetsTitle}>
               {t("layout.settings.presets")}
             </div>
-            <div className="grid grid-cols-3 gap-x-4 gap-y-3">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
               {Object.entries(colorPrimarys).map(([preset, color]) => (
                 <Card
                   key={preset}
-                  className="flex h-14 w-full cursor-pointer items-center justify-center"
+                  className="flex h-16 w-full cursor-pointer items-center justify-center"
                   style={{
                     backgroundColor:
                       themeColorPresets === preset ? `${color}14` : "",

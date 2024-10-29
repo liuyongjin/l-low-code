@@ -106,6 +106,7 @@ export default [
   {
     url: "/api/list/table-list",
     method: "post",
+    // statusCode: 500,
     response: () => {
       return {
         status: 0,

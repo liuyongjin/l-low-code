@@ -9,10 +9,6 @@ function App() {
     <AntdConfigProvider>
       <AntdApp className="h-full">
         <MotionLazy>
-          {/* <Helmet>
-        <title>Slash Admin</title>
-        <link rel="icon" href={Logo} />
-      </Helmet> */}
           <Router />
         </MotionLazy>
       </AntdApp>

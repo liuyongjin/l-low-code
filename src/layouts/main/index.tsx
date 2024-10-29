@@ -45,7 +45,7 @@ export const MainLayout = () => {
                   </MultiTabsProvider>
                 </div>
               ) : (
-                <div className={styles.outletWrapper}>
+                <div className={styles.outlet}>
                   <Outlet />
                 </div>
               )}
@@ -60,7 +60,7 @@ export const MainLayout = () => {
 const useStyles = createStyles(({ token }) => {
   const { colorBgContainer, borderRadiusLG, margin, padding } = token;
   return {
-    outletWrapper: {
+    outlet: {
       margin: margin,
       padding: padding,
       minHeight: 320,

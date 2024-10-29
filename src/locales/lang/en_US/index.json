@@ -32,6 +32,10 @@
     }
   },
   "sys": {
+    "api": {
+      "apiRequestFailed": "The interface request failed, please try again later!",
+      "errorMessage": "The operation failed, the system is abnormal!"
+    },
     "page": {
       "goToHome": "Go To Home",
       "pageNotFound": "Sorry, Page Not Found!",

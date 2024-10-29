@@ -2,22 +2,18 @@ import { useMutation } from "@tanstack/react-query";
 
 import { baseService } from "./baseService";
 
-export type DashboardReq = {};
-
-export type DashboardRes = {};
-
 export enum DashboardApi {
   Dashboard = "/dashboard/workbench",
 }
 
+export type DashboardReq = object;
+
 export const workbench = (data: DashboardReq) =>
   baseService.post({ url: DashboardApi.Dashboard, data });
 
-export const useDashboard = () => {
+export const useWorkbench = () => {
   const mutation = useMutation({
-    mutationFn: (data: DashboardRes) => {
-      return workbench(data);
-    },
+    mutationFn: workbench,
   });
 
   return mutation.mutateAsync;

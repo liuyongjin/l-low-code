@@ -20,9 +20,11 @@ export const getStringItem = (key: StorageEnum): string | null => {
 export const setItem = <T>(key: StorageEnum, value: T): void => {
   localStorage.setItem(key, JSON.stringify(value));
 };
+
 export const removeItem = (key: StorageEnum): void => {
   localStorage.removeItem(key);
 };
+
 export const clearItems = () => {
   localStorage.clear();
 };

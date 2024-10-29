@@ -3,7 +3,7 @@ import { createStyles } from "antd-style";
 import classNames from "classnames";
 import { m } from "framer-motion";
 
-import LoginBg from "@/assets/images/login_bg.png";
+import LoginBg from "@/assets/images/login-bg.png";
 import { LocalePicker } from "@/components";
 import { VARIANTS } from "@/constants";
 
@@ -14,7 +14,7 @@ export const Login = () => {
 
   return (
     <Layout className="relative flex items-center justify-center h-full">
-      <div className={classNames(styles.loginWrapper, "flex")}>
+      <div className={classNames(styles.login, "flex")}>
         <div className="flex items-center justify-center flex-col">
           <div className="text-5xl font-bold">L Admin</div>
           <img className="max-w-[480px]" src={LoginBg} alt="LoginBg" />
@@ -35,7 +35,7 @@ export const Login = () => {
 const useStyles = createStyles(({ token }) => {
   const { colorBgContainer } = token;
   return {
-    loginWrapper: {
+    login: {
       borderRadius: "0.5rem",
       padding: "1rem",
       background: colorBgContainer,

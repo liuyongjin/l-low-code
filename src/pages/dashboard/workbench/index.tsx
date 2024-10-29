@@ -4,7 +4,7 @@ import { Descriptions, DescriptionsProps, Flex, Statistic } from "antd";
 import { createStyles } from "antd-style";
 import { useState } from "react";
 
-import { useDashboard } from "@/api";
+import { useWorkbench } from "@/api";
 import { Iconify } from "@/components";
 import { useThemeToken } from "@/hooks";
 import { useSettings } from "@/store";
@@ -15,7 +15,7 @@ export const Workbench = () => {
   const { colorPrimary } = useThemeToken();
   const { styles } = useStyles(themeMode);
   const [dataSource, setDataSource] = useState([]);
-  const dashboard = useDashboard();
+  const dashboard = useWorkbench();
 
   const getData = async () => {
     const res = await dashboard({});
@@ -118,9 +118,9 @@ export const Workbench = () => {
   };
 
   return (
-    <div className={styles.workbenchWrapper}>
+    <div className={styles.workbench}>
       <Flex gap="middle">
-        <div className={styles.chartWrapper}>
+        <div className={styles.chart}>
           <Statistic
             className={styles.statistic}
             title="Active"
@@ -132,7 +132,7 @@ export const Workbench = () => {
           />
           <Line {...lineConfig} />
         </div>
-        <div className={styles.chartWrapper}>
+        <div className={styles.chart}>
           <Statistic
             className={styles.statistic}
             title="Active"
@@ -144,7 +144,7 @@ export const Workbench = () => {
           />
           <Line {...lineConfig} />
         </div>
-        <div className={styles.chartWrapper}>
+        <div className={styles.chart}>
           <Statistic
             className={styles.statistic}
             title="Active"
@@ -158,7 +158,7 @@ export const Workbench = () => {
         </div>
       </Flex>
       <Descriptions
-        className={styles.descriptionsWrapper}
+        className={styles.descriptions}
         title="User Info"
         items={items}
       />
@@ -170,12 +170,12 @@ export const Workbench = () => {
 
 const useStyles = createStyles((_, themeMode) => {
   return {
-    workbenchWrapper: {
+    workbench: {
       background: themeMode === ThemeMode.Light ? "#f5f5f5" : "",
       borderRadius: "0.5rem",
       padding: "1rem",
     },
-    chartWrapper: {
+    chart: {
       display: "flex",
       flex: "1",
       borderRadius: "0.5rem",
@@ -186,7 +186,7 @@ const useStyles = createStyles((_, themeMode) => {
       width: "9rem",
       padding: "1rem",
     },
-    descriptionsWrapper: {
+    descriptions: {
       marginTop: "1rem",
       borderRadius: "0.5rem",
       padding: "1rem",

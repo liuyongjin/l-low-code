@@ -1,21 +1,10 @@
 import { ThemeConfig } from "antd";
 
-import { ThemeColorPresets } from "@/types/enum";
+import { colorPrimarys } from "@/theme/antd/theme";
 
 const customThemeToken: ThemeConfig["token"] = {};
 
 const customComponent: ThemeConfig["components"] = {};
-
-const colorPrimarys: {
-  [k in ThemeColorPresets]: string;
-} = {
-  default: "#00a76f",
-  cyan: "#078DEE",
-  purple: "#7635DC",
-  blue: "#2065D1",
-  orange: "#FDA92D",
-  red: "#FF3030",
-};
 
 const themeModeToken: Record<"dark" | "light", ThemeConfig> = {
   dark: {
