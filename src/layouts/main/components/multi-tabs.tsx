@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 
 import { Iconify } from "@/components";
 import { useMultiTabsContext, useRouter, useThemeToken } from "@/hooks";
-import { RouteMeta } from "@/types";
+import { TabEntity } from "@/types";
 import { MultiTabOperation } from "@/types/enum";
 
 export const MultiTabs = () => {
@@ -99,7 +99,7 @@ export const MultiTabs = () => {
     [openDropdownTabKey, t, tabs],
   );
 
-  const calcTabStyle: (tab: RouteMeta) => CSSProperties = useCallback(
+  const calcTabStyle: (tab: TabEntity) => CSSProperties = useCallback(
     (tab) => {
       const isActive =
         tab.key === activeTabRoutePath || tab.key === hoveringTabKey;
@@ -130,7 +130,7 @@ export const MultiTabs = () => {
         item: ReactInstance;
         domEvent: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>;
       },
-      tab: RouteMeta,
+      tab: TabEntity,
     ) => {
       const { key, domEvent } = menuInfo;
       domEvent.stopPropagation();
@@ -171,7 +171,7 @@ export const MultiTabs = () => {
     ],
   );
 
-  const onOpenChange = (open: boolean, tab: RouteMeta) => {
+  const onOpenChange = (open: boolean, tab: TabEntity) => {
     if (open) {
       setopenDropdownTabKey(tab.key);
     } else {
@@ -180,7 +180,7 @@ export const MultiTabs = () => {
   };
 
   const renderTabLabel = useCallback(
-    (tab: RouteMeta) => {
+    (tab: TabEntity) => {
       if (tab.hideTab) return null;
       return (
         <Dropdown

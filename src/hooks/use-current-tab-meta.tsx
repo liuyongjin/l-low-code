@@ -6,14 +6,14 @@ import {
   useRouteLoaderData,
 } from "react-router-dom";
 
-import { RouteMeta } from "@/types";
+import { TabEntity } from "@/types";
 
-export function useCurrentRouteMeta() {
+export function useCurrentTabMeta() {
   const { pathname } = useLocation();
   const outlet = useOutlet();
   const matchs = useMatches();
-  const [currentRouteMeta, setCurrentRouteMeta] = useState<RouteMeta>();
-  const loaderData = useRouteLoaderData(pathname) as RouteMeta;
+  const [currentTabMeta, setCurrentTabMeta] = useState<TabEntity>();
+  const loaderData = useRouteLoaderData(pathname) as TabEntity;
 
   useEffect(() => {
     const lastRoute = matchs[matchs.length - 1];
@@ -22,10 +22,10 @@ export function useCurrentRouteMeta() {
       loaderData.outlet = outlet;
       loaderData.key = pathname;
       loaderData.hideTab = false;
-      setCurrentRouteMeta({ ...loaderData });
+      setCurrentTabMeta({ ...loaderData });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchs]);
 
-  return currentRouteMeta;
+  return currentTabMeta;
 }

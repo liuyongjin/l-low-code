@@ -3,8 +3,9 @@ import { domMax, LazyMotion, m } from "framer-motion";
 type Props = {
   children: React.ReactNode;
 };
+
 /**
- * [Reduce bundle size by lazy-loading a subset of Motion's features](https://www.framer.com/motion/lazy-motion/)
+ * [lazy-loading features](https://www.framer.com/motion/lazy-motion/)
  */
 export function MotionLazy({ children }: Props) {
   return (

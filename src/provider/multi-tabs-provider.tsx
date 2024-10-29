@@ -7,14 +7,14 @@ import {
   useState,
 } from "react";
 
-import { useCurrentRouteMeta, useRouter } from "@/hooks";
-import { RouteMeta } from "@/types";
+import { useCurrentTabMeta, useRouter } from "@/hooks";
+import { TabEntity } from "@/types";
 import { getTimeStamp } from "@/utils";
 
 interface MultiTabsContextType {
-  tabs: RouteMeta[];
+  tabs: TabEntity[];
   activeTabRoutePath?: string;
-  setTabs: (tabs: RouteMeta[]) => void;
+  setTabs: (tabs: TabEntity[]) => void;
   closeTab: (path?: string) => void;
   closeOthersTab: (path?: string) => void;
   closeAll: () => void;
@@ -39,15 +39,15 @@ export const MultiTabsContext = createContext<MultiTabsContextType>({
 
 export function MultiTabsProvider({ children }: PropsWithChildren) {
   const { push } = useRouter();
-  const [tabs, setTabs] = useState<RouteMeta[]>([]);
+  const [tabs, setTabs] = useState<TabEntity[]>([]);
 
-  const currentRouteMeta = useCurrentRouteMeta();
+  const currentTabMeta = useCurrentTabMeta();
   const activeTabRoutePath = useMemo(() => {
-    if (!currentRouteMeta) return "";
+    if (!currentTabMeta) return "";
 
-    const { key } = currentRouteMeta;
+    const { key } = currentTabMeta;
     return key;
-  }, [currentRouteMeta]);
+  }, [currentTabMeta]);
 
   /**
    * Close specified tab
@@ -139,21 +139,21 @@ export function MultiTabsProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     setTabs((prev) => prev.filter((item) => !item.hideTab));
-    if (!currentRouteMeta) return;
-    const { key } = currentRouteMeta;
+    if (!currentTabMeta) return;
+    const { key } = currentTabMeta;
     const isExisted = tabs.find((item) => item.key === key);
     if (!isExisted) {
       setTabs((prev) => [
         ...prev,
         {
-          ...currentRouteMeta,
+          ...currentTabMeta,
           key,
           timeStamp: getTimeStamp(),
         },
       ]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRouteMeta]);
+  }, [currentTabMeta]);
 
   const defaultValue: MultiTabsContextType = useMemo(
     () => ({

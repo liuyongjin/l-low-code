@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 import { BasicStatus } from "./enum";
 
 export interface MenuEntity {
@@ -11,4 +13,27 @@ export interface MenuEntity {
   auth?: string[];
   status?: BasicStatus;
   children?: Array<MenuEntity>;
+}
+
+export interface TabEntity {
+  /**
+   * selectedKeys
+   */
+  key: string;
+  /**
+   * i18n label
+   */
+  label: string;
+  /**
+   * hide in multi tab
+   */
+  hideTab?: boolean;
+  /**
+   * react router outlet
+   */
+  outlet?: ReactElement | null;
+  /**
+   * timeStamp
+   */
+  timeStamp?: string;
 }

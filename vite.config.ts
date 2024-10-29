@@ -27,17 +27,5 @@ export default defineConfig(({ command }) => {
         enable: command === "serve",
       }),
     ],
-    // server: {
-    //   open: true,
-    //   host: true,
-    //   port: 5173,
-    //   proxy: {
-    //     "/api": {
-    //       target: "http://localhost:5173",
-    //       changeOrigin: true,
-    //       rewrite: (path) => path.replace(/^\/api/, ""),
-    //     },
-    //   },
-    // },
   };
 });

@@ -1,4 +1,4 @@
-export * from "./use-current-route-meta";
+export * from "./use-current-tab-meta";
 export * from "./use-locale";
 export * from "./use-multi-tabs-context";
 export * from "./use-permission-routes";
