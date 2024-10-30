@@ -1,6 +1,6 @@
 import { MockMethod } from "vite-plugin-mock";
 
-import { mockMenuData } from "./permissions";
+import { mockMenuData } from "./management";
 
 const mockUserInfo = {
   id: "000001",

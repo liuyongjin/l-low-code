@@ -39,7 +39,7 @@ const useStyles = createStyles(({ token }) => {
   return {
     navLink: {
       background: colorPrimary,
-      color: colorBgBase,
+      color: `${colorBgBase} !important`,
       padding: "0.5rem",
       borderRadius: "0.375rem",
     },

@@ -27,7 +27,7 @@ export const mockMenuData = [
   {
     parentId: "",
     label: "layout.menu.list",
-    icon: "material-symbols:data-thresholding-outline-rounded",
+    icon: "f7:square-list",
     path: "list",
     id: "/list",
     componentName: "",
@@ -77,7 +77,7 @@ export const mockMenuData = [
 
 export default [
   {
-    url: "/api/user/permissions",
+    url: "/api/management/permissions",
     method: "post",
     response: () => {
       return {

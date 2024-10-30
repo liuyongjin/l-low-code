@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { baseService } from "./baseService";
 
 export enum ManagementApi {
-  Permissions = "/user/permissions",
+  Permissions = "/management/permissions",
 }
 
 export type PermissionsReq = object;
