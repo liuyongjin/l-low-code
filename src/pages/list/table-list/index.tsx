@@ -1,19 +1,18 @@
 import { useMount } from "ahooks";
-import { Button, Popconfirm, Table } from "antd";
+import { Popconfirm, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 import { useState } from "react";
 
 import { useTableList } from "@/api";
-import { IconButton, Iconify } from "@/components";
+import { AccessButton, AllowedAccess, IconButton, Iconify } from "@/components";
 import { MenuEntity } from "@/types/entity";
 
 export const TableList = () => {
-  const [dataSource, setDataSource] = useState([]);
+  const [dataSource, setDataSource] = useState<any>([]);
   const tableList = useTableList();
 
   const getList = async () => {
     const res = await tableList({});
-    console.log(res);
     setDataSource(res);
   };
 
@@ -49,11 +48,13 @@ export const TableList = () => {
       key: "operation",
       align: "center",
       width: 100,
-      render: (text, record) => (
+      render: () => (
         <div className="flex w-full justify-center text-gray">
-          <IconButton>
-            <Iconify icon="solar:pen-bold-duotone" size={18} />
-          </IconButton>
+          <AllowedAccess permissions={["edit"]}>
+            <IconButton>
+              <Iconify icon="solar:pen-bold-duotone" size={18} />
+            </IconButton>
+          </AllowedAccess>
           <Popconfirm
             title="Delete the Permission"
             okText="Yes"
@@ -61,13 +62,15 @@ export const TableList = () => {
             placement="left"
           >
             <div>
-              <IconButton>
-                <Iconify
-                  icon="mingcute:delete-2-fill"
-                  size={18}
-                  className="text-error"
-                />
-              </IconButton>
+              <AllowedAccess permissions={["delete"]}>
+                <IconButton>
+                  <Iconify
+                    icon="mingcute:delete-2-fill"
+                    size={18}
+                    className="text-error"
+                  />
+                </IconButton>
+              </AllowedAccess>
             </div>
           </Popconfirm>
         </div>
@@ -78,7 +81,9 @@ export const TableList = () => {
   return (
     <div>
       <div className="flex justify-end mb-4">
-        <Button type="primary">New</Button>
+        <AccessButton type="primary" permissions={["add"]}>
+          New
+        </AccessButton>
       </div>
       <Table
         rowKey="key"

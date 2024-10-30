@@ -2,45 +2,6 @@ import { MockMethod } from "vite-plugin-mock";
 
 const mockData = [
   {
-    key: 102,
-    href: "https://ant.design",
-    avatar:
-      "https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png",
-    name: "TradeCode 1",
-    owner: "曲丽丽",
-    callNo: 351,
-    status: "1",
-    updatedAt: "2024-10-21T03:22:57.282Z",
-    createdAt: "2024-10-21T03:22:57.282Z",
-    progress: 8,
-  },
-  {
-    key: 101,
-    href: "https://ant.design",
-    avatar:
-      "https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png",
-    name: "TradeCode 2",
-    owner: "曲丽丽",
-    callNo: 279,
-    status: "1",
-    updatedAt: "2024-10-21T03:15:40.191Z",
-    createdAt: "2024-10-21T03:15:40.191Z",
-    progress: 29,
-  },
-  {
-    key: 100,
-    href: "https://ant.design",
-    avatar:
-      "https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png",
-    name: "TradeCode 3",
-    owner: "曲丽丽",
-    callNo: 327,
-    status: "0",
-    updatedAt: "2024-10-21T01:49:47.440Z",
-    createdAt: "2024-10-21T01:49:47.440Z",
-    progress: 20,
-  },
-  {
     key: 99,
     disabled: false,
     href: "https://ant.design",

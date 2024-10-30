@@ -15,6 +15,7 @@ function transformToPermissionRoutes(menus: MenuEntity[], level: number = 0) {
       id,
       label,
       path,
+      auth,
       icon,
       componentName,
       component,
@@ -25,7 +26,7 @@ function transformToPermissionRoutes(menus: MenuEntity[], level: number = 0) {
       path: path,
       id: id,
       loader: () => {
-        return { icon, label };
+        return { icon, label, auth };
       },
       async lazy() {
         if (componentName && component) {

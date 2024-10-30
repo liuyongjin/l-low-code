@@ -13,6 +13,8 @@ export interface MenuEntity {
   auth?: string[];
   status?: BasicStatus;
   children?: Array<MenuEntity>;
+  deletable?: boolean;
+  editable?: boolean;
 }
 
 export interface TabEntity {
@@ -28,6 +30,10 @@ export interface TabEntity {
    * hide in multi tab
    */
   hideTab?: boolean;
+  /**
+   * auth
+   */
+  auth?: string[];
   /**
    * react router outlet
    */

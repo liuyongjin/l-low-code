@@ -56,6 +56,8 @@ export const mockMenuData = [
     component: "",
     auth: [],
     status: "Enable",
+    editable: false,
+    deletable: false,
     children: [
       {
         parentId: "/management",
@@ -66,6 +68,8 @@ export const mockMenuData = [
         component: "/management/permissions/index.tsx",
         auth: ["add", "delete", "view", "edit"],
         status: "Enable",
+        editable: false,
+        deletable: false,
       },
     ],
   },

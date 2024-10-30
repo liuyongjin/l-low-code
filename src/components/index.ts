@@ -1,3 +1,5 @@
+export * from "./access-button";
+export * from "./allowed-access";
 export * from "./antd-config-provider";
 export * from "./auth-guard";
 export * from "./circle-loading";

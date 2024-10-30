@@ -5,12 +5,12 @@ import { t } from "i18next";
 import { useState } from "react";
 
 import { usePermissions } from "@/api";
-import { IconButton, Iconify } from "@/components";
+import { AllowedAccess, IconButton, Iconify } from "@/components";
 import { MenuEntity } from "@/types/entity";
 import { BasicStatus } from "@/types/enum";
 
 export const Permissions = () => {
-  const [dataSource, setDataSource] = useState([]);
+  const [dataSource, setDataSource] = useState<any>([]);
   const permissions = usePermissions();
 
   const getList = async () => {
@@ -67,32 +67,41 @@ export const Permissions = () => {
     },
     {
       title: "Action",
-      key: "operation",
       align: "center",
       width: 100,
-      render: (text, record) => (
-        <div className="flex w-full justify-center text-gray">
-          <IconButton>
-            <Iconify icon="solar:pen-bold-duotone" size={18} />
-          </IconButton>
-          <Popconfirm
-            title="Delete the Permission"
-            okText="Yes"
-            cancelText="No"
-            placement="left"
-          >
-            <div>
-              <IconButton>
-                <Iconify
-                  icon="mingcute:delete-2-fill"
-                  size={18}
-                  className="text-error"
-                />
-              </IconButton>
-            </div>
-          </Popconfirm>
-        </div>
-      ),
+      render: (_, record) => {
+        return (
+          <div className="flex w-full justify-center text-gray">
+            {record.editable === false ? null : (
+              <AllowedAccess permissions={["edit"]}>
+                <IconButton>
+                  <Iconify icon="solar:pen-bold-duotone" size={18} />
+                </IconButton>
+              </AllowedAccess>
+            )}
+            {record.deletable === false ? null : (
+              <Popconfirm
+                title="Delete the Permission"
+                okText="Yes"
+                cancelText="No"
+                placement="left"
+              >
+                <div>
+                  <AllowedAccess permissions={["delete"]}>
+                    <IconButton>
+                      <Iconify
+                        icon="mingcute:delete-2-fill"
+                        size={18}
+                        className="text-error"
+                      />
+                    </IconButton>
+                  </AllowedAccess>
+                </div>
+              </Popconfirm>
+            )}
+          </div>
+        );
+      },
     },
   ];
 
