@@ -2,11 +2,11 @@ import { useMutation } from "@tanstack/react-query";
 
 import { baseService } from "./baseService";
 
-export type PermissionsReq = object;
-
 export enum ManagementApi {
   Permissions = "/user/permissions",
 }
+
+export type PermissionsReq = object;
 
 export const permissions = (data: PermissionsReq) =>
   baseService.post({ url: ManagementApi.Permissions, data });

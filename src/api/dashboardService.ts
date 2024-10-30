@@ -8,7 +8,7 @@ export enum DashboardApi {
 
 export type DashboardReq = object;
 
-export const workbench = (data: DashboardReq) =>
+export const workbench = (data?: DashboardReq) =>
   baseService.post({ url: DashboardApi.Dashboard, data });
 
 export const useWorkbench = () => {

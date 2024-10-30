@@ -14,189 +14,75 @@ const mockLineData = [
 
 const mockMultLineData = [
   {
-    date: "2018/8/1",
-    type: "download",
-    value: 4623,
+    name: "Page A",
+    uv: 4000,
   },
   {
-    date: "2018/8/1",
-    type: "register",
-    value: 2208,
+    name: "Page B",
+    uv: 3000,
   },
   {
-    date: "2018/8/1",
-    type: "bill",
-    value: 182,
+    name: "Page C",
+    uv: 2000,
   },
   {
-    date: "2018/8/2",
-    type: "download",
-    value: 6145,
+    name: "Page D",
+    uv: 2780,
   },
   {
-    date: "2018/8/2",
-    type: "register",
-    value: 2016,
+    name: "Page E",
+    uv: 1890,
   },
   {
-    date: "2018/8/2",
-    type: "bill",
-    value: 257,
+    name: "Page F",
+    uv: 2390,
   },
   {
-    date: "2018/8/3",
-    type: "download",
-    value: 508,
+    name: "Page G",
+    uv: 3490,
   },
   {
-    date: "2018/8/3",
-    type: "register",
-    value: 2916,
+    name: "Page E",
+    uv: 1890,
   },
   {
-    date: "2018/8/3",
-    type: "bill",
-    value: 289,
+    name: "Page F",
+    uv: 2390,
   },
   {
-    date: "2018/8/4",
-    type: "download",
-    value: 6268,
+    name: "Page G",
+    uv: 3490,
   },
   {
-    date: "2018/8/4",
-    type: "register",
-    value: 4512,
+    name: "Page D",
+    uv: 2780,
   },
   {
-    date: "2018/8/4",
-    type: "bill",
-    value: 428,
+    name: "Page E",
+    uv: 1890,
+  },
+];
+
+const mockRadarData = [
+  {
+    subject: "Active Users",
+    A: 120,
   },
   {
-    date: "2018/8/5",
-    type: "download",
-    value: 6411,
+    subject: "Total Installed",
+    A: 98,
   },
   {
-    date: "2018/8/5",
-    type: "register",
-    value: 8281,
+    subject: "PV",
+    A: 85,
   },
   {
-    date: "2018/8/5",
-    type: "bill",
-    value: 619,
+    subject: "UV",
+    A: 65,
   },
   {
-    date: "2018/8/6",
-    type: "download",
-    value: 1890,
-  },
-  {
-    date: "2018/8/6",
-    type: "register",
-    value: 2008,
-  },
-  {
-    date: "2018/8/6",
-    type: "bill",
-    value: 87,
-  },
-  {
-    date: "2018/8/7",
-    type: "download",
-    value: 4251,
-  },
-  {
-    date: "2018/8/7",
-    type: "register",
-    value: 1963,
-  },
-  {
-    date: "2018/8/7",
-    type: "bill",
-    value: 706,
-  },
-  {
-    date: "2018/8/8",
-    type: "download",
-    value: 2978,
-  },
-  {
-    date: "2018/8/8",
-    type: "register",
-    value: 2367,
-  },
-  {
-    date: "2018/8/8",
-    type: "bill",
-    value: 387,
-  },
-  {
-    date: "2018/8/9",
-    type: "download",
-    value: 3880,
-  },
-  {
-    date: "2018/8/9",
-    type: "register",
-    value: 2956,
-  },
-  {
-    date: "2018/8/9",
-    type: "bill",
-    value: 488,
-  },
-  {
-    date: "2018/8/10",
-    type: "download",
-    value: 3606,
-  },
-  {
-    date: "2018/8/10",
-    type: "register",
-    value: 678,
-  },
-  {
-    date: "2018/8/10",
-    type: "bill",
-    value: 507,
-  },
-  {
-    date: "2018/8/11",
-    type: "download",
-    value: 4311,
-  },
-  {
-    date: "2018/8/13",
-    type: "download",
-    value: 6419,
-  },
-  {
-    date: "2018/8/13",
-    type: "register",
-    value: 2852,
-  },
-  {
-    date: "2018/8/13",
-    type: "bill",
-    value: 689,
-  },
-  {
-    date: "2018/8/14",
-    type: "download",
-    value: 1643,
-  },
-  {
-    date: "2018/8/14",
-    type: "register",
-    value: 4788,
-  },
-  {
-    date: "2018/8/15",
-    type: "bill",
-    value: 176,
+    subject: "Total Downloads",
+    A: 86,
   },
 ];
 
@@ -208,7 +94,13 @@ export default [
       return {
         status: 0,
         message: "成功",
-        data: [mockLineData, mockLineData, mockLineData, mockMultLineData],
+        data: [
+          mockLineData,
+          mockLineData,
+          mockLineData,
+          mockRadarData,
+          mockMultLineData,
+        ],
       };
     },
   },

@@ -21,9 +21,7 @@ export const LoginForm = () => {
   const login = useLogin();
 
   const handleFinish = async (values: typeof initialValues) => {
-    console.log("Received values of form: ", values);
     const userInfo = await login(values);
-    console.log("userInfo: ", userInfo);
     dispatch(setUserInfo(userInfo));
     replace(HOMEPAGE);
   };

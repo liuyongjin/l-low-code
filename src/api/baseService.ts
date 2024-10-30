@@ -82,8 +82,8 @@ class BaseService {
     return new Promise((resolve, reject) => {
       axiosInstance
         .request(config)
-        .then((res: AxiosResponse<Result>) => {
-          resolve(res);
+        .then((res) => {
+          return resolve(res);
         })
         .catch((e: Error | AxiosError) => {
           reject(e);

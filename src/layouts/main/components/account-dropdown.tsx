@@ -1,15 +1,17 @@
 import { Divider, MenuProps } from "antd";
 import Dropdown, { DropdownProps } from "antd/es/dropdown/dropdown";
+import { createStyles } from "antd-style";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { IconButton, Iconify } from "@/components";
-import { useRouter, useThemeToken } from "@/hooks";
+import { useRouter } from "@/hooks";
 import { clearSettings, clearUserInfo, useUserInfo } from "@/store";
 
 export function AccountDropdown() {
+  const { styles } = useStyles();
   const { replace } = useRouter();
   const { username } = useUserInfo();
   const dispatch = useDispatch();
@@ -27,27 +29,18 @@ export function AccountDropdown() {
     }
   };
 
-  const { colorBgElevated, borderRadiusLG, boxShadowSecondary } =
-    useThemeToken();
-
-  const contentStyle: React.CSSProperties = {
-    minWidth: 180,
-    backgroundColor: colorBgElevated,
-    borderRadius: borderRadiusLG,
-    boxShadow: boxShadowSecondary,
-  };
-
-  const menuStyle: React.CSSProperties = {
-    boxShadow: "none",
-  };
-
   const dropdownRender: DropdownProps["dropdownRender"] = (menu) => (
-    <div style={contentStyle}>
-      <div className="flex flex-col items-start p-4">
+    <div className={styles.dropdownRender}>
+      <div className="flex flex-col items-start p-2">
         <div className="text-gray">{username}</div>
       </div>
-      <Divider style={{ margin: 0 }} />
-      {React.cloneElement(menu as React.ReactElement, { style: menuStyle })}
+      <Divider className="m-0" />
+      {React.cloneElement(menu as React.ReactElement, {
+        style: {
+          boxShadow: "none",
+          padding: 0,
+        },
+      })}
     </div>
   );
 
@@ -60,7 +53,7 @@ export function AccountDropdown() {
       ),
       key: "1",
     },
-    { type: "divider" },
+    { type: "divider", style: { margin: 0 } },
     {
       label: (
         <button className="font-bold text-warning">
@@ -86,3 +79,16 @@ export function AccountDropdown() {
     </Dropdown>
   );
 }
+
+const useStyles = createStyles(({ token }) => {
+  const { colorBgElevated, borderRadiusLG, boxShadowSecondary } = token;
+
+  return {
+    dropdownRender: {
+      minWidth: 180,
+      backgroundColor: colorBgElevated,
+      borderRadius: borderRadiusLG,
+      boxShadow: boxShadowSecondary,
+    },
+  };
+});

@@ -1,8 +1,20 @@
-import { Line } from "@ant-design/charts";
 import { useMount } from "ahooks";
 import { Descriptions, DescriptionsProps, Flex, Statistic } from "antd";
 import { createStyles } from "antd-style";
 import { useState } from "react";
+import {
+  Bar,
+  BarChart,
+  Line,
+  LineChart,
+  PolarAngleAxis,
+  Radar,
+  RadarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 import { useWorkbench } from "@/api";
 import { Iconify } from "@/components";
@@ -12,40 +24,19 @@ import { ThemeMode } from "@/types/enum";
 
 export const Workbench = () => {
   const { themeMode } = useSettings();
-  const { colorPrimary } = useThemeToken();
+  const { colorPrimary, colorText } = useThemeToken();
   const { styles } = useStyles(themeMode);
-  const [dataSource, setDataSource] = useState([]);
-  const dashboard = useWorkbench();
+  const [dataSource, setDataSource] = useState<any>([]);
+  const workbench = useWorkbench();
 
   const getData = async () => {
-    const res = await dashboard({});
+    const res = await workbench({});
     setDataSource(res);
   };
 
   useMount(() => {
     getData();
   });
-
-  const lineConfig = {
-    data: dataSource[0] || [],
-    title: {
-      visible: true,
-    },
-    colorField: colorPrimary,
-    axis: {
-      x: {
-        label: false,
-        tick: false,
-      },
-      y: {
-        label: false,
-        grid: false,
-        tick: false,
-      },
-    },
-    xField: "year",
-    yField: "value",
-  };
 
   const items: DescriptionsProps["items"] = [
     {
@@ -77,84 +68,104 @@ export const Workbench = () => {
     },
   ];
 
-  const multLineConfig = {
-    title: {
-      visible: true,
-      text: "多折线图",
-    },
-    description: {
-      visible: true,
-      text: "通过回调函数指定折线颜色",
-    },
-    colorField: colorPrimary,
-    padding: "auto",
-    forceFit: true,
-    data: dataSource[3] || [],
-    xField: "date",
-    yField: "value",
-    axis: {
-      x: {
-        label: false,
-        tick: false,
-      },
-      y: {
-        label: false,
-        grid: false,
-        tick: false,
-      },
-    },
-    yAxis: {
-      label: {
-        formatter: (v) =>
-          `${v}`.replace(/\d{1,3}(?=(\d{3})+$)/g, (s) => `${s},`),
-      },
-    },
-    legend: { position: "right-top" },
-    seriesField: "type",
-    color: (d) => {
-      return d === "register" ? "#93D072" : "#2D71E7";
-    },
-    responsive: true,
-  };
-
   return (
     <div className={styles.workbench}>
       <Flex gap="middle">
         <div className={styles.chart}>
           <Statistic
             className={styles.statistic}
-            title="Active"
-            value={11.28}
+            title="Active Users"
+            value={7.28}
             precision={2}
             valueStyle={{ color: colorPrimary }}
             prefix={<Iconify icon="ri:arrow-up-line" />}
             suffix="%"
           />
-          <Line {...lineConfig} />
+          <LineChart width={100} height={120} data={dataSource[0] || []}>
+            <Tooltip
+              itemStyle={{
+                color: colorText,
+              }}
+              contentStyle={{
+                background: "transparent",
+                border: "none",
+              }}
+            />
+            <XAxis dataKey="year" hide />
+            <YAxis hide />
+            <Line
+              type="monotone"
+              name="users"
+              dataKey="value"
+              stroke={colorPrimary}
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
         </div>
         <div className={styles.chart}>
           <Statistic
             className={styles.statistic}
-            title="Active"
-            value={11.28}
+            title="Total Installed"
+            value={6.28}
             precision={2}
             valueStyle={{ color: colorPrimary }}
             prefix={<Iconify icon="ri:arrow-up-line" />}
             suffix="%"
           />
-          <Line {...lineConfig} />
+          <LineChart width={100} height={120} data={dataSource[1] || []}>
+            <Tooltip
+              itemStyle={{
+                color: colorText,
+              }}
+              contentStyle={{
+                background: "transparent",
+                border: "none",
+              }}
+            />
+            <XAxis dataKey="year" hide />
+            <YAxis hide />
+            <Line
+              type="monotone"
+              name="installed"
+              dataKey="value"
+              stroke={colorPrimary}
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
         </div>
         <div className={styles.chart}>
           <Statistic
             className={styles.statistic}
-            title="Active"
+            title="Total Downloads"
             value={11.28}
             precision={2}
             valueStyle={{ color: colorPrimary }}
             prefix={<Iconify icon="ri:arrow-up-line" />}
             suffix="%"
           />
-          <Line {...lineConfig} />
+          <LineChart width={100} height={120} data={dataSource[2] || []}>
+            <Tooltip
+              itemStyle={{
+                color: colorText,
+              }}
+              contentStyle={{
+                background: "transparent",
+                border: "none",
+              }}
+            />
+            <XAxis dataKey="year" hide />
+            <YAxis hide />
+            <Line
+              type="monotone"
+              name="downloads"
+              dataKey="value"
+              stroke={colorPrimary}
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
         </div>
       </Flex>
       <Descriptions
@@ -162,8 +173,52 @@ export const Workbench = () => {
         title="User Info"
         items={items}
       />
-      <Line className={styles.multLine} {...multLineConfig} />
-      <Line className={styles.multLine} {...multLineConfig} />
+      <div className={styles.radar}>
+        <ResponsiveContainer>
+          <RadarChart
+            cx="50%"
+            cy="50%"
+            outerRadius="80%"
+            data={dataSource[3] || []}
+          >
+            <Tooltip
+              itemStyle={{
+                color: colorText,
+              }}
+              contentStyle={{
+                background: "transparent",
+                border: "none",
+              }}
+            />
+            <PolarAngleAxis dataKey="subject" />
+            <Radar
+              name="Lily"
+              dataKey="A"
+              stroke={colorPrimary}
+              fill={colorPrimary}
+              fillOpacity={0.6}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
+      <div className={styles.multLine}>
+        <ResponsiveContainer>
+          <BarChart data={dataSource[4] || []}>
+            <Tooltip
+              itemStyle={{
+                color: colorText,
+              }}
+              contentStyle={{
+                background: "transparent",
+                border: "none",
+              }}
+            />
+            <XAxis dataKey="name" hide />
+            <YAxis hide />
+            <Bar dataKey="uv" fill={colorPrimary} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
@@ -177,12 +232,14 @@ const useStyles = createStyles((_, themeMode) => {
     },
     chart: {
       display: "flex",
+      alignItems: "center",
       flex: "1",
       borderRadius: "0.5rem",
-      height: "12rem",
+      height: "8rem",
       background: themeMode === ThemeMode.Light ? "#ffffff" : "",
     },
     statistic: {
+      fontWeight: 600,
       width: "9rem",
       padding: "1rem",
     },
@@ -195,6 +252,14 @@ const useStyles = createStyles((_, themeMode) => {
     multLine: {
       height: "18rem !important",
       marginTop: "1rem",
+      padding: "1rem",
+      borderRadius: "0.5rem",
+      background: themeMode === ThemeMode.Light ? "#ffffff" : "",
+    },
+    radar: {
+      height: "18rem !important",
+      marginTop: "1rem",
+      padding: "1rem",
       borderRadius: "0.5rem",
       background: themeMode === ThemeMode.Light ? "#ffffff" : "",
     },
